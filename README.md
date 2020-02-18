@@ -1,1 +1,8 @@
-pinnacle_100_boards
+# Pinnacle 100 Boards
+
+This repository contains board files that can be used with the Zephyr RTOS.
+All of the board files contained in this repository use the Pinnacle 100 modem.
+
+## pinnacle_100_dvk
+
+This is the board file for the Pinnacle 100 development board.
