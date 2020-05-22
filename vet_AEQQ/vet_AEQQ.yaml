@@ -1,0 +1,17 @@
+identifier: vet_AEQQ
+name: vet_AEQQ
+type: mcu
+arch: arm
+toolchain:
+  - zephyr
+  - gnuarmemb
+  - xtools
+supported:
+  - pwm
+  - gpio
+  - spi
+  - i2c
+  - counter
+  - adc
+ram: 96
+flash: 1024

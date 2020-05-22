@@ -1,0 +1,7 @@
+# STM32L476RG RET/VET Laird Connectivity board configuration
+
+# Copyright (c) 2020 Laird Connectivity
+
+config BOARD_VET_AEQQ
+	bool "VET AEQQ Development Board"
+	depends on SOC_STM32L476XX
