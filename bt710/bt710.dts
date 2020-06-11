@@ -1,0 +1,247 @@
+/*
+ * Copyright (c) 2020 Laird Connectivity
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+#include <nordic/nrf52833_qiaa.dtsi>
+
+/ {
+	model = "Laird BT710 Sensor";
+	compatible = "nordic,nrf52833-dk-nrf52833";
+
+	chosen {
+		zephyr,console = &uart0;
+		zephyr,shell-uart = &uart0;
+		zephyr,uart-mcumgr = &uart0;
+		zephyr,bt-mon-uart = &uart0;
+		zephyr,bt-c2h-uart = &uart0;
+		zephyr,sram = &sram0;
+		zephyr,flash = &flash0;
+		zephyr,code-partition = &slot0_partition;
+	};
+
+	leds {
+		compatible = "gpio-leds";
+		led1red: led_1red {
+			gpios = <&gpio0 21 GPIO_ACTIVE_HIGH>;
+			label = "Red LED 1";
+		};
+		led1green: led_1green {
+			gpios = <&gpio0 24 GPIO_ACTIVE_HIGH>;
+			label = "Green LED 1";
+		};
+        led1blue: led_1blue {
+			gpios = <&gpio0 5 GPIO_ACTIVE_HIGH>;
+			label = "Blue LED 1";
+		};
+        led2red: led_2red {
+			gpios = <&gpio0 13 GPIO_ACTIVE_HIGH>;
+			label = "Red LED 2";
+		};
+        led3red: led_3red {
+			gpios = <&gpio0 14 GPIO_ACTIVE_HIGH>;
+			label = "Red LED 3";
+		};
+        led4red: led_4red {
+			gpios = <&gpio0 15 GPIO_ACTIVE_HIGH>;
+			label = "Red LED 4";
+		};
+        led5red: led_5red {
+			gpios = <&gpio0 16 GPIO_ACTIVE_HIGH>;
+			label = "Red LED 5";
+		};
+	};
+
+    pwmleds {
+		compatible = "pwm-leds";
+
+		led1red_pwm: led_pwm_1red {
+			pwms = <&pwm1 21>;
+			label = "Red PWM LED 1";
+		};
+
+        led1green_pwm: led_pwm_1green {
+			pwms = <&pwm1 24>;
+			label = "Green PWM LED 1";
+		};
+
+        led1blue_pwm: led_pwm_1blue {
+			pwms = <&pwm1 5>;
+			label = "Blue PWM LED 1";
+		};
+
+        led2red_pwm: led_pwm_2red {
+			pwms = <&pwm2 13>;
+			label = "Red PWM LED 2";
+		};
+
+        led3red_pwm: led_pwm_3red {
+			pwms = <&pwm2 14>;
+			label = "Red PWM LED 2";
+		};
+
+        led4red_pwm: led_pwm_4red {
+			pwms = <&pwm2 15>;
+			label = "Red PWM LED 2";
+		};
+
+        led5red_pwm: led_pwm_5red {
+			pwms = <&pwm2 16>;
+			label = "Red PWM LED 2";
+		};
+
+	};
+
+	buttons {
+		compatible = "gpio-keys";
+		button0: button_0 {
+			gpios = <&gpio1 2 GPIO_PULL_UP>;
+			label = "Push button switch 0 (SW0)";
+		};
+        switch1: button_1 {
+			gpios = <&gpio0 25 GPIO_PULL_DOWN>;
+			label = "Switch 1 (SW1)";
+		};
+	};
+
+	piezos {
+		compatible = "pwm-leds";
+
+		piezo0: piezo_0 {
+			pwms = <&pwm0 17>;
+			label = "Piezo";
+		};
+    };
+
+    vibemotors {
+		compatible = "pwm-leds";
+
+		vibe0: vibe_0 {
+			pwms = <&pwm3 20>;
+			label = "Vibe Motor";
+		};
+    };
+
+	aliases {
+		led1r = &led1red;
+        led1g = &led1green;
+		led1b = &led1blue;
+        led2 = &led2red;
+        led3 = &led3red;
+        led4 = &led4red;
+        led5 = &led5red;
+        led1rpwm = &led1red_pwm;
+        led1gpwm = &led1green_pwm;
+		led1bpwm = &led1blue_pwm;
+        led2pwm = &led2red_pwm;
+        led3pwm = &led3red_pwm;
+        led4pwm = &led4red_pwm;
+        led5pwm = &led5red_pwm;
+		sw0 = &button0;
+        sw1 = &switch1;
+        piezo = &piezo0;
+        vibemotor = &vibe0;
+	};
+};
+
+&pwm0 {
+	status = "okay";
+	ch0-pin = <17>;
+};
+
+&pwm1 {
+    status = "okay";
+    ch0-pin = <21>;
+    ch1-pin = <24>;
+    ch2-pin = <5>;
+};
+
+&pwm2 {
+    status = "okay";
+    ch0-pin = <13>;
+    ch1-pin = <14>;
+    ch2-pin = <15>;
+    ch3-pin = <16>;
+};
+
+&pwm3 {
+	status = "okay";
+	ch0-pin = <20>;
+};
+
+&adc {
+	status = "okay";
+};
+
+&gpiote {
+	status = "okay";
+};
+
+&gpio0 {
+	status = "okay";
+};
+
+&gpio1 {
+	status = "okay";
+};
+
+&uart0 {
+	compatible = "nordic,nrf-uart";
+	current-speed = <115200>;
+	status = "okay";
+	tx-pin = <6>;
+	rx-pin = <8>;
+	rts-pin = <5>;
+	cts-pin = <7>;
+};
+
+&i2c0 {
+	compatible = "nordic,nrf-twi";
+	status = "okay";
+	sda-pin = <26>;
+	scl-pin = <27>;
+};
+
+&spi1 {
+    compatible = "nordic,nrf-spi";
+	status = "okay";
+	sck-pin = <41>;
+	mosi-pin = <40>;
+	miso-pin = <4>;
+    cs-gpios = <&gpio0 11 0>;
+};
+
+&flash0 {
+	/*
+	 * For more information, see:
+	 * http://docs.zephyrproject.org/latest/guides/dts/index.html#flash-partitions
+	 */
+	partitions {
+		compatible = "fixed-partitions";
+		#address-cells = <1>;
+		#size-cells = <1>;
+
+		boot_partition: partition@0 {
+			label = "mcuboot";
+			reg = <0x000000000 0xC000>;
+		};
+		slot0_partition: partition@c000 {
+			label = "image-0";
+			reg = <0x0000C000 0x32000>;
+		};
+		slot1_partition: partition@3e000 {
+			label = "image-1";
+			reg = <0x0003E000 0x32000>;
+		};
+		scratch_partition: partition@70000 {
+			label = "image-scratch";
+			reg = <0x00070000 0xA000>;
+		};
+		storage_partition: partition@7a000 {
+			label = "storage";
+			reg = <0x0007A000 0x00006000>;
+		};
+	};
+};

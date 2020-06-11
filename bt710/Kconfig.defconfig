@@ -1,0 +1,18 @@
+# BT710 Sensor configuration
+
+# Copyright (c) 2020 Laird Connectivity
+# SPDX-License-Identifier: Apache-2.0
+
+if BOARD_BT710
+
+config BOARD
+	default "bt710"
+
+config IEEE802154_NRF5
+	default y
+	depends on IEEE802154
+
+config BT_CTLR
+	default BT
+
+endif # BOARD_BT710

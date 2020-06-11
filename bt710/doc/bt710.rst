@@ -1,0 +1,9 @@
+.. _bt710:
+
+Laird Connectivity BT710 Sensor
+############################
+
+Overview
+********
+
+The BT710 Sensor is a battery powered, Bluetooth v5 Long Range integrated sensor that uses a Nordic Semiconductor nRF52833 ARM Cortex-M4F CPU.

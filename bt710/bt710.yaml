@@ -1,0 +1,17 @@
+identifier: bt710
+name: BT710
+type: mcu
+arch: arm
+toolchain:
+  - zephyr
+  - gnuarmemb
+  - xtools
+supported:
+  - adc
+  - ble
+  - gpio
+  - ieee802154
+  - pwm
+  - watchdog
+  - counter
+
