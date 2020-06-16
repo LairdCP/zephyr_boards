@@ -81,6 +81,14 @@
 	status = "okay";
 	sda-pin = <26>;
 	scl-pin = <27>;
+
+	lis2dh12@18 {
+		compatible = "st,lis2dh12", "st,lis2dh";
+		reg = <0x18>;
+		irq-gpios = <&gpio1 5 GPIO_ACTIVE_HIGH>,
+				<&gpio1 12 GPIO_ACTIVE_HIGH>;
+		label = "LIS2DH12";
+	};
 };
 
 &flash0 {
