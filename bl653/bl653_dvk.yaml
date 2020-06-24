@@ -12,4 +12,6 @@ supported:
   - ble
   - ieee802154
   - pwm
-  - watchdog
+  - watchdog 
+  - gpio
+  - counter

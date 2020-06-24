@@ -6,7 +6,7 @@ Laird Connectivity BL653 DVK
 Overview
 ********
 
-The BL653 Development Kit hardware provides
+The BL653 Development Kit (453-00039-K1, 453-00041-K1) hardware provides
 support for the Laird Connectivity BL653 module powered by a Nordic Semiconductor nRF52833 ARM Cortex-M4F CPU.
 
 This development kit has the following features:
@@ -126,13 +126,13 @@ Here is an example for the :ref:`hello_world` application.
 
 First, run your favorite terminal program to listen for output.
 
-NOTE: On the BL653 DVK, the FTDI USB should be used to access the UART console.
+NOTE: On the BL653 development board, the FTDI USB should be used to access the UART console.
 
 .. code-block:: console
 
    $ minicom -D <tty_device> -b 115200
 
-Replace :code:`<tty_device>` with the port where the board nRF52 DK
+Replace :code:`<tty_device>` with the port where the BL653 development kit
 can be found. For example, under Linux, :code:`/dev/ttyUSB0`.
 
 Then build and flash the application in the usual way.
