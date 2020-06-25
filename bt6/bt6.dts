@@ -1,0 +1,186 @@
+/*
+ * Copyright (c) 2020 Laird Connectivity
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+#include <nordic/nrf52833_qiaa.dtsi>
+
+/ {
+	model = "Laird BT6 Sensor";
+	compatible = "nordic,pca10056-dk", "nordic,nrf52840-qiaa",
+		     "nordic,nrf52840";
+
+	chosen {
+		zephyr,console = &uart0;
+		zephyr,shell-uart = &uart0;
+		zephyr,uart-mcumgr = &uart0;
+		zephyr,bt-mon-uart = &uart0;
+		zephyr,bt-c2h-uart = &uart0;
+		zephyr,sram = &sram0;
+		zephyr,flash = &flash0;
+		zephyr,code-partition = &slot0_partition;
+	};
+
+	leds {
+		compatible = "gpio-leds";
+		led1red: led_1 {
+			gpios = <&gpio0 35 GPIO_ACTIVE_HIGH>;
+			label = "Red LED 1";
+		};
+		led2green: led_2 {
+			gpios = <&gpio0 39 GPIO_ACTIVE_HIGH>;
+			label = "Green LED 1";
+		};
+	};
+
+    pwmleds {
+		compatible = "pwm_leds";
+
+		led1red_pwm: led_pwm_1 {
+			pwms = <&pwm0 35>;
+			label = "PWM LED 1 RED";
+		};
+
+        led1green_pwm: led_pwm_2 {
+			pwms = <&pwm1 39>;
+			label = "PWM LED 2 Green";
+		};
+
+	};
+
+	buttons {
+		compatible = "gpio-keys";
+		button0: button_0 {
+			gpios = <&gpio1 18 GPIO_PULL_UP>;
+			label = "Reset button switch 0 (SW0)";
+		};
+		button1: button_1 {
+			gpios = <&gpio1 24 GPIO_PULL_UP>;
+			label = "Boot button switch 1 (SW1)";
+		};
+		button2: button_2 {
+			gpios = <&gpio1 33 GPIO_PULL_UP>;
+			label = "Tamper switch 2 (SW2)";
+		};
+	};
+
+
+	aliases {
+		led1 = &led1red;
+        led2 = &led2green;
+        led1pwm = &led1red_pwm;
+        led2pwm = &led2green_pwm;
+		sw0 = &button0;
+		sw1 = &button1;
+        sw2 = &button2;
+	};
+};
+
+&pwm0 {
+	status = "okay";
+	ch0-pin = <35>;
+};
+
+&pwm1 {
+    status = "okay";
+    ch0-pin = <39>;
+
+};
+
+
+&adc {
+	status = "okay";
+};
+
+&gpiote {
+	status = "okay";
+};
+
+&gpio0 {
+	status = "okay";
+};
+
+&gpio1 {
+	status = "okay";
+};
+
+&uart0 {
+	compatible = "nordic,nrf-uart";
+	current-speed = <115200>;
+	status = "okay";
+	tx-pin = <8>;
+	rx-pin = <6>;
+	rts-pin = <7>;
+	cts-pin = <5>;
+};
+
+&uart1 {
+	compatible = "nordic,nrf-uart";
+	current-speed = <115200>;
+	status = "okay";
+	tx-pin = <14>;
+	rx-pin = <16>;
+	rts-pin = <15>;
+	cts-pin = <13>;
+};
+
+&i2c0 {
+	compatible = "nordic,nrf-twi";
+	status = "okay";
+	sda-pin = <26>;
+	scl-pin = <27>;
+};
+
+&spi1 {
+    compatible = "nordic,nrf-spi";
+	status = "okay";
+	sck-pin = <41>;
+	mosi-pin = <40>;
+	miso-pin = <4>;
+    cs-gpios = <&gpio0 18 0>;
+};
+
+&flash0 {
+	/*
+	 * For more information, see:
+	 * http://docs.zephyrproject.org/latest/guides/dts/index.html#flash-partitions
+	 */
+	partitions {
+		compatible = "fixed-partitions";
+		#address-cells = <1>;
+		#size-cells = <1>;
+
+		boot_partition: partition@0 {
+			label = "mcuboot";
+			reg = <0x000000000 0x0000C000>;
+		};
+		slot0_partition: partition@c000 {
+			label = "image-0";
+			reg = <0x0000C000 0x000067000>;
+		};
+		slot1_partition: partition@73000 {
+			label = "image-1";
+			reg = <0x00073000 0x000067000>;
+		};
+		scratch_partition: partition@da000 {
+			label = "image-scratch";
+			reg = <0x000da000 0x0001e000>;
+		};
+
+		/*
+		 * The flash starting at 0x000f8000 and ending at
+		 * 0x000fffff is reserved for use by the application.
+		 */
+
+		/*
+		 * Storage partition will be used by FCB/LittleFS/NVS
+		 * if enabled.
+		 */
+		storage_partition: partition@f8000 {
+			label = "storage";
+			reg = <0x000f8000 0x00008000>;
+		};
+	};
+};
