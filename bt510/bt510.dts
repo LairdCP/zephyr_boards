@@ -89,6 +89,12 @@
 				<&gpio1 12 GPIO_ACTIVE_HIGH>;
 		label = "LIS2DH12";
 	};
+
+	si7055@40 {
+		compatible = "silabs,si7055";
+		reg = <0x40>;
+		label = "SI7055";
+	};
 };
 
 &flash0 {
