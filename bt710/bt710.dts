@@ -210,6 +210,12 @@
 				<&gpio1 12 GPIO_ACTIVE_HIGH>;
 		label = "LIS2DH12";
 	};
+
+	bme280@77 {
+		compatible = "bosch,bme280";
+		reg = <0x77>;
+		label = "BME280";
+	};
 };
 
 &spi1 {
