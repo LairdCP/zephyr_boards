@@ -5,12 +5,11 @@
  */
 
 /dts-v1/;
-#include <nordic/nrf52833_qiaa.dtsi>
+#include <nordic/nrf52840_qiaa.dtsi>
 
 / {
 	model = "Laird BT6 Sensor";
-	compatible = "nordic,pca10056-dk", "nordic,nrf52840-qiaa",
-		     "nordic,nrf52840";
+	compatible = "nordic,nrf52840-dk-nrf52840";
 
 	chosen {
 		zephyr,console = &uart0;
@@ -36,14 +35,14 @@
 	};
 
     pwmleds {
-		compatible = "pwm_leds";
-
-		led1red_pwm: led_pwm_1 {
+		compatible = "pwm-leds";
+		
+		led1redpwm: led_pwm_1 {
 			pwms = <&pwm0 35>;
 			label = "PWM LED 1 RED";
 		};
 
-        led1green_pwm: led_pwm_2 {
+        led2greenpwm: led_pwm_2 {
 			pwms = <&pwm1 39>;
 			label = "PWM LED 2 Green";
 		};
@@ -53,15 +52,15 @@
 	buttons {
 		compatible = "gpio-keys";
 		button0: button_0 {
-			gpios = <&gpio1 18 GPIO_PULL_UP>;
+			gpios = <&gpio0 18 GPIO_PULL_UP>;
 			label = "Reset button switch 0 (SW0)";
 		};
 		button1: button_1 {
-			gpios = <&gpio1 24 GPIO_PULL_UP>;
+			gpios = <&gpio0 24 GPIO_PULL_UP>;
 			label = "Boot button switch 1 (SW1)";
 		};
 		button2: button_2 {
-			gpios = <&gpio1 33 GPIO_PULL_UP>;
+			gpios = <&gpio0 33 GPIO_PULL_UP>;
 			label = "Tamper switch 2 (SW2)";
 		};
 	};
@@ -70,8 +69,8 @@
 	aliases {
 		led1 = &led1red;
         led2 = &led2green;
-        led1pwm = &led1red_pwm;
-        led2pwm = &led2green_pwm;
+        led1pwm = &led1redpwm;
+        led2pwm = &led2greenpwm;
 		sw0 = &button0;
 		sw1 = &button1;
         sw2 = &button2;
@@ -110,10 +109,10 @@
 	compatible = "nordic,nrf-uart";
 	current-speed = <115200>;
 	status = "okay";
-	tx-pin = <8>;
-	rx-pin = <6>;
-	rts-pin = <7>;
-	cts-pin = <5>;
+	tx-pin = <6>;
+	rx-pin = <8>;
+	rts-pin = <5>;
+	cts-pin = <7>;
 };
 
 &uart1 {
