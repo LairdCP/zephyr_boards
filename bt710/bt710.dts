@@ -219,12 +219,12 @@
 };
 
 &spi1 {
-    compatible = "nordic,nrf-spi";
+	compatible = "nordic,nrf-spi";
 	status = "okay";
 	sck-pin = <41>;
 	mosi-pin = <40>;
 	miso-pin = <4>;
-    cs-gpios = <&gpio0 11 0>;
+	cs-gpios = <&gpio0 11 0>;
 	mx25r4035fzuil0@0 {
 		compatible = "jedec,spi-nor";
 		label = "MX25R4035FZUIL0";
