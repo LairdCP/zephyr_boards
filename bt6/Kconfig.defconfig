@@ -1,4 +1,4 @@
-# BT710 Sensor configuration
+# BT6 Sensor configuration
 
 # Copyright (c) 2020 Laird Connectivity
 # SPDX-License-Identifier: Apache-2.0
@@ -7,36 +7,22 @@ if BOARD_BT6
 
 config BOARD
 	default "bt6"
+if USB
+
+config USB_NRFX
+	default y
+
+config USB_DEVICE_STACK
+	default y
+
+endif # USB
 
 config IEEE802154_NRF5
 	default y
 	depends on IEEE802154
 
-config BT_CTLR
-	default BT
-	
-config ADC_0
-	default y
-	depends on ADC	
-
-config I2C_0
-	default y
-	depends on I2C
-
-config PWM_0
-	default y
-	depends on PWM
-	
-if SPI
-config PWM_1
-	default y
-	depends on PWM	
-
-config SPI_0
-	default y	
-endif # SPI
 	
 config BT_CTLR
 	default BT
-	
-endif # BOARD_BT710
+		
+endif # BOARD_BT6
