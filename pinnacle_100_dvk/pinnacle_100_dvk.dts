@@ -120,7 +120,7 @@
 		mdm-uart-dsr-gpios = <&gpio0 25 0>;
 		mdm-uart-cts-gpios = <&gpio0 15 0>;
 		mdm-gpio6-gpios = <&gpio1 12 0>;
-	};    
+	};
 };
 
 &i2c0 {
@@ -168,21 +168,15 @@
 		#address-cells = <1>;
 		#size-cells = <1>;
 
+		/* 96K */
 		boot_partition: partition@0 {
 			label = "mcuboot";
-			reg = <0x000000000 0x0000C000>;
+			reg = <0x000000000 0x00018000>;
 		};
-		slot0_partition: partition@c000 {
+		/* 896K */
+		slot0_partition: partition@18000 {
 			label = "image-0";
-			reg = <0x0000C000 0x00067000>;
-		};
-		slot1_partition: partition@73000 {
-			label = "image-1";
-			reg = <0x00073000 0x00067000>;
-		};
-		scratch_partition: partition@da000 {
-			label = "image-scratch";
-			reg = <0x000da000 0x0001e000>;
+			reg = <0x00018000 0x000E0000>;
 		};
 
 		/*
@@ -191,12 +185,36 @@
 		 */
 
 		/*
-		 * Storage partition will be used by FCB/LittleFS/NVS
-		 * if enabled.
+		 * Storage partition will be used by FCB/NVS
+		 * if enabled. 32K
 		 */
 		storage_partition: partition@f8000 {
 			label = "storage";
 			reg = <0x000f8000 0x00008000>;
+		};
+	};
+};
+
+&mx25r64 {
+	partitions {
+		compatible = "fixed-partitions";
+		#address-cells = <1>;
+		#size-cells = <1>;
+
+		/* 896K */
+		slot1_partition: partition@0 {
+			label = "image-1";
+			reg = <0x0000000 0x000E0000>;
+		};
+		/* 128K */
+		scratch_partition: partition@100000 {
+			label = "image-scratch";
+			reg = <0x00100000 0x00020000>;
+		};
+		/* 4MB starting halfway */
+		lfs_partition: partition@400000 {
+			label = "lfs_storage";
+			reg = <0x00400000 0x000400000>;
 		};
 	};
 };
