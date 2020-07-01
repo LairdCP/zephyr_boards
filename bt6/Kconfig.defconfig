@@ -20,7 +20,8 @@ endif # USB
 config IEEE802154_NRF5
 	default y
 	depends on IEEE802154
-
+	
+CONFIG_NFCT_PINS_AS_GPIOS=y
 	
 config BT_CTLR
 	default BT
