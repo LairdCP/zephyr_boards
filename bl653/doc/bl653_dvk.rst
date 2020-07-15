@@ -171,6 +171,54 @@ You can build and flash the examples to make sure Zephyr is running correctly on
 your board. The button and LED definitions can be found in
 :zephyr_file:`boards/arm/bl653_dvk/bl653_dvk.dts`.
 
+Using UART1
+***********
+
+The following approach can be used when an application needs to use
+more than one UART for connecting peripheral devices:
+
+1. Add devicetree overlay file to the main directory of your application:
+
+   .. code-block:: console
+
+      $ cat nrf52833dk_nrf52833.overlay
+      &uart1 {
+        compatible = "nordic,nrf-uarte";
+        current-speed = <115200>;
+        status = "okay";
+        tx-pin = <14>;
+        rx-pin = <16>;
+      };
+
+   In the overlay file above, pin P0.16 is used for RX and P0.14 is used for TX
+
+2. Use the UART1 as ``device_get_binding(DT_LABEL(DT_NODELABEL(uart1)))``
+
+Overlay file naming
+===================
+
+The file has to be named ``<board>.overlay`` and placed in the app main directory to be
+picked up automatically by the build system.
+
+Selecting the pins
+==================
+To select the pin numbers for tx-pin and rx-pin:
+
+.. code-block:: console
+
+   tx-pin = <pin_no>
+
+Open the `nRF52833 Product Specification`_, chapter 7 'Hardware and Layout'.
+In the table 7.1.1 'aQFN73 ball assignments' select the pins marked
+'General purpose I/O'.  Note that pins marked as 'low frequency I/O only' can only be used
+in under-10KHz applications. They are not suitable for 115200 speed of UART.
+
+Translate the 'Pin' into number for devicetree by using the following formula::
+
+   pin_no = b*32 + a
+
+where ``a`` and ``b`` are from the Pin value in the table (Pb.a).
+For example, for P0.1, ``pin_no = 1`` and for P1.0, ``pin_no = 32``.
 
 References
 **********
