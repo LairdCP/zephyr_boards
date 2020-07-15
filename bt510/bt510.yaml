@@ -12,3 +12,5 @@ supported:
   - ieee802154
   - pwm
   - watchdog
+  - i2c
+  - spi

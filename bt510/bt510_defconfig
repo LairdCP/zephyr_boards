@@ -16,12 +16,13 @@ CONFIG_GPIO=y
 # enable uart driver
 CONFIG_SERIAL=y
 
-# enable accelerometer
+# enable accelerometer & temperature sensor
 CONFIG_I2C=y
 CONFIG_SENSOR=y
 CONFIG_LIS2DH=y
 CONFIG_LIS2DH_TRIGGER_GLOBAL_THREAD=y
 CONFIG_LIS2DH_OPER_MODE_LOW_POWER=y
+CONFIG_SI7055=y
 
 # enable console
 CONFIG_CONSOLE=y
