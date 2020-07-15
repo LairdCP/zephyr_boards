@@ -1,14 +1,14 @@
 .. _bt510:
 
 Laird Connectivity Sentrius BT510 Sensor
-############################
+########################################
 
 Overview
 ********
 
 The Sentrius™ BT510 Sensor is a battery powered, Bluetooth v5 Long Range integrated sensor that uses a Nordic Semiconductor nRF52840 ARM Cortex-M4F CPU.
 
-This development kit has the following features:
+The sensor has the following features:
 
 * :abbr:`ADC (Analog to Digital Converter)`
 * CLOCK
@@ -22,23 +22,23 @@ This development kit has the following features:
 * :abbr:`RTC (nRF RTC System Clock)`
 * Segger RTT (RTT Console)
 * :abbr:`SPI (Serial Peripheral Interface)`
-* :abbr:`UART (Universal asynchronous receiver-transmitter)`
+* :abbr:`UART (Universal Asynchronous Receiver-Transmitter)`
 * :abbr:`USB (Universal Serial Bus)`
 * :abbr:`WDT (Watchdog Timer)`
 
 .. figure:: img/bt510.png
      :width: 500px
      :align: center
-     :alt: Sentrius BT510 Sensor
+     :alt: Sentrius BT510 Sensor, front view
 
-     Sentrius BT510 Sensor
+     Sentrius BT510 Sensor, front view
 
 .. figure:: img/bt510_back.jpg
      :width: 500px
      :align: center
-     :alt: Back of the BT510
+     :alt: Sentrius BT510 Sensor, rear view
 
-     Back of the BT510
+     Sentrius BT510 Sensor, rear view
 
 More information about the board can be found at the
 `Sentrius BT510 website`_.
@@ -88,7 +88,7 @@ hardware features:
 +-----------+------------+----------------------+
 
 Other hardware features are not supported by the Zephyr kernel.
-See `Sentrius BT510 website`_
+See the `Sentrius BT510 website`_
 for a complete list of BT510 Sensor features.
 
 Connections and IOs
@@ -113,6 +113,43 @@ Applications for the ``bt510`` board configuration can be
 built and flashed in the usual way (see :ref:`build_an_application`
 and :ref:`application_run` for more details); however, the standard
 debugging targets are not currently available.
+
+The BT510 features a TagConnect 10 way socket for connection of a
+programmer/debugger, refer to `TagConnect TC2050 product page`_
+for details of an appropriate TagConnect cable.
+
+A non-standard layout is used to include access to the sensor debug UART.
+
++-----------+------------+----------------------+
+| Pin No.   | Name       | Description          |
++===========+============+======================+
+| 1         | Vcc        | Power Supply, 3.3V   |
++-----------+------------+----------------------+
+| 2         | SWDIO      | SWD Data             |
++-----------+------------+----------------------+
+| 3         | RXD        | Debug UART RX Data   |
++-----------+------------+----------------------+
+| 4         | SWDCLK     | SWD Clock            |
++-----------+------------+----------------------+
+| 5         | TM         | Spare GPIO           |
++-----------+------------+----------------------+
+| 6         | SWO        | SWD Output           |
++-----------+------------+----------------------+
+| 7         | N/C        | Not Connected        |
++-----------+------------+----------------------+
+| 8         | TXD        | Debug UART TX Data   |
++-----------+------------+----------------------+
+| 9         | GND        | Ground               |
++-----------+------------+----------------------+
+| 10        | RESET      | Reset, Active Low    |
++-----------+------------+----------------------+
+
+Connectivity to the programmer/debugger must be modified to match
+the pinout shown above.
+
+Laird Connectivity provide the USB-SWD programming board that supports
+this connector layout, refer to the `USB SWD Programmer product page`_
+.
 
 Flashing
 ========
@@ -158,8 +195,8 @@ Try them out:
 * :ref:`bluetooth-ibeacon-sample`
 
 
-Testing the LEDs and buttons on the BT510 DVK
-************************************************
+Testing the LEDs and buttons on the BT510
+*****************************************
 
 There are 2 samples that allow you to test that the buttons (switches) and LEDs on
 the board are working properly with Zephyr:
@@ -178,4 +215,5 @@ References
 .. target-notes::
 
 .. _Sentrius BT510 website: https://www.lairdconnect.com/iot-devices/iot-sensors/bt510-bluetooth-5-long-range-ip67-multi-sensor
-.. _J-Link Software and documentation pack: https://www.segger.com/jlink-software.html
+.. _TagConnect TC2050 product page: https://www.tag-connect.com/product/tc2050-idc-050
+.. _USB SWD Programmer product page: https://www.lairdconnect.com/usb-swd-programmer/
