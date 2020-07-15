@@ -23,7 +23,7 @@ This development kit has the following features:
 * :abbr:`RTC (nRF RTC System Clock)`
 * Segger RTT (RTT Console)
 * :abbr:`SPI (Serial Peripheral Interface)`
-* :abbr:`UART (Universal asynchronous receiver-transmitter)`
+* :abbr:`UART (Universal Asynchronous Receiver-Transmitter)`
 * :abbr:`USB (Universal Serial Bus)`
 * :abbr:`WDT (Watchdog Timer)`
 
@@ -226,4 +226,4 @@ References
 .. target-notes::
 
 .. _BL653 website: https://www.lairdconnect.com/wireless-modules/bluetooth-modules/bluetooth-5-modules/bl653-series-bluetooth-51-802154-nfc-module
-.. _J-Link Software and documentation pack: https://www.segger.com/jlink-software.html
+.. _nRF52833 Product Specification: https://infocenter.nordicsemi.com/pdf/nRF52833_OPS_v0.7.pdf
