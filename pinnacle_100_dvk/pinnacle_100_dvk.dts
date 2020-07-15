@@ -207,14 +207,14 @@
 			reg = <0x0000000 0x000E0000>;
 		};
 		/* 128K */
-		scratch_partition: partition@100000 {
+		scratch_partition: partition@E0000 {
 			label = "image-scratch";
-			reg = <0x00100000 0x00020000>;
+			reg = <0x000E0000 0x00020000>;
 		};
-		/* 4MB starting halfway */
-		lfs_partition: partition@400000 {
+		/* 7MB */
+		lfs_partition: partition@100000 {
 			label = "lfs_storage";
-			reg = <0x00400000 0x000400000>;
+			reg = <0x00100000 0x000700000>;
 		};
 	};
 };
