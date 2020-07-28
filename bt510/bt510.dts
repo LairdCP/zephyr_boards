@@ -42,6 +42,38 @@
 		};
 	};
 
+	ids {
+		compatible = "gpio-keys";
+		id0: id_0 {
+			gpios = <&gpio1 2 GPIO_PULL_UP>;
+			label = "ID 0";
+		};
+		id1: id_1 {
+			gpios = <&gpio1 1 GPIO_PULL_UP>;
+			label = "ID 1";
+		};
+		id2: id_2 {
+			gpios = <&gpio0 25 GPIO_PULL_UP>;
+			label = "ID 2";
+		};
+	};
+
+	tm {
+		compatible = "gpio-keys";
+		tm0: tm_0 {
+			gpios = <&gpio0 3 GPIO_PULL_UP>;
+			label = "Test mode (TM)";
+		};
+	};
+
+	mag {
+		compatible = "gpio-keys";
+		mag0: mag_0 {
+			gpios = <&gpio1 14 0>;
+			label = "Magnetoresitive Sensor";
+		};
+	};
+
 	/* These aliases are provided for compatibility with samples */
 	aliases {
 		led0 = &led1a;
