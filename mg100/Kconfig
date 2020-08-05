@@ -4,11 +4,9 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
-if BOARD_MG100
-
 config BOARD_ENABLE_DCDC
-        bool "Enable DCDC mode"
-        select SOC_DCDC_NRF52X
-        default y
+	bool "Enable DCDC mode"
+	select SOC_DCDC_NRF52X
+	default y
+	depends on BOARD_MG100
 
-endif # BOARD_MG100
