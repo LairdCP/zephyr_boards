@@ -1,13 +1,12 @@
-# Pinnacle(TM) 100 DVK board configuration
+# BT6 Sensor configuration
 
-# Copyright (c) 2019 Laird Connectivity
+# Copyright (c) 2020 Laird Connectivity
 # SPDX-License-Identifier: Apache-2.0
 
-if BOARD_PINNACLE_100_DVK
+if BOARD_BT6
 
 config BOARD
-	default "pinnacle_100_dvk"
-
+	default "bt6"
 if USB
 
 config USB_NRFX
@@ -21,8 +20,10 @@ endif # USB
 config IEEE802154_NRF5
 	default y
 	depends on IEEE802154
-
+	
+CONFIG_NFCT_PINS_AS_GPIOS=y
+	
 config BT_CTLR
 	default BT
-
-endif # BOARD_PINNACLE_100_DVK
+		
+endif # BOARD_BT6

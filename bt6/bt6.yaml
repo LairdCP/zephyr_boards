@@ -1,5 +1,5 @@
-identifier: pinnacle_100_dvk
-name: pinnacle_100_dvk
+identifier: bt6
+name: BT6
 type: mcu
 arch: arm
 ram: 256
@@ -11,13 +11,11 @@ toolchain:
 supported:
   - adc
   - ble
-  - counter
   - gpio
   - i2c
   - ieee802154
   - pwm
   - spi
-  - usb_cdc
-  - usb_device
   - watchdog
-  - netif:openthread
+  - counter
+

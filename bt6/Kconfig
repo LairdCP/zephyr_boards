@@ -1,12 +1,10 @@
-# Kconfig - MG100(TM) board configuration
-#
+# BT6 board configuration
+
 # Copyright (c) 2020 Laird Connectivity
-#
 # SPDX-License-Identifier: Apache-2.0
 
 config BOARD_ENABLE_DCDC
 	bool "Enable DCDC mode"
 	select SOC_DCDC_NRF52X
 	default y
-	depends on BOARD_MG100
-
+	depends on BOARD_BT6

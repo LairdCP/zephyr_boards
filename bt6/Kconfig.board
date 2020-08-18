@@ -1,0 +1,8 @@
+# BT6 board configuration
+
+# Copyright (c) 2020 Laird Connectivity
+# SPDX-License-Identifier: Apache-2.0
+
+config BOARD_BT6
+	bool "BT6"
+	depends on SOC_NRF52840_QIAA

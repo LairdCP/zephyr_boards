@@ -14,4 +14,6 @@ supported:
   - pwm
   - watchdog
   - counter
+  - spi
+  - i2c
 

@@ -13,24 +13,8 @@ CONFIG_USE_SEGGER_RTT=y
 # enable GPIO
 CONFIG_GPIO=y
 
-# enable UART
+# enable uart driver
 CONFIG_SERIAL=y
-
-#enable PWM 
-CONFIG_PWM=y
-
-# enable accelerometer & pressure sensor
-CONFIG_I2C=y
-CONFIG_SENSOR=y
-CONFIG_LIS2DH=y
-CONFIG_LIS2DH_TRIGGER_GLOBAL_THREAD=y
-CONFIG_LIS2DH_OPER_MODE_LOW_POWER=y
-CONFIG_BME280=y
-
-# enable flash
-CONFIG_SPI=y
-CONFIG_FLASH=y
-CONFIG_SPI_NOR=y
 
 # enable console
 CONFIG_CONSOLE=y
