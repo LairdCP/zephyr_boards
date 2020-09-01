@@ -10,7 +10,7 @@ controller, full Bluetooth 5 and LTE-M/NB-IoT capabilities – all with full
 regulatory certifications and LTE carrier approvals. The Pinnacle 100 also
 delivers complete antenna flexibility, with pre-integrated internal or external
 antenna options such as the Revie Flex family of LTE and NB-IoT
-internal antennas. 
+internal antennas.
 
 Develop your application directly on the M4F controller using Zephyr RTOS to
 cut BOM costs and power consumption. Take advantage of the Zephyr community,
@@ -106,7 +106,7 @@ hardware features:
 | HL7800    | UART       | HL7800 modem driver  |
 +-----------+------------+----------------------+
 
-See `Pinnacle 100 website`_ for a complete list 
+See `Pinnacle 100 website`_ for a complete list
 of Pinnacle 100 Development Kit hardware features.
 
 Connections and IOs
@@ -133,9 +133,8 @@ Programming and Debugging
 *************************
 
 Applications for the ``pinnacle_100_dvk`` board configuration can be
-built and flashed in the usual way (see :ref:`build_an_application`
-and :ref:`application_run` for more details); however, the standard
-debugging targets are not currently available.
+built and flashed in the usual way. (see :ref:`build_an_application`
+and :ref:`application_run` for more details)
 
 Flashing
 ========

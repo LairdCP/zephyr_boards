@@ -1,7 +1,6 @@
-# Kconfig - Pinnacle(TM) 100 DVK board configuration
+# Pinnacle(TM) 100 DVK board configuration
 #
 # Copyright (c) 2020 Laird Connectivity
-#
 # SPDX-License-Identifier: Apache-2.0
 
 config  BOARD_PINNACLE_100_DVK

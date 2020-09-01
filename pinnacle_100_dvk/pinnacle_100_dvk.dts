@@ -101,6 +101,7 @@
 };
 
 &uart1 {
+	compatible = "nordic,nrf-uarte";
 	status = "okay";
 	current-speed = <115200>;
 	tx-pin = <14>;
@@ -124,6 +125,7 @@
 };
 
 &i2c0 {
+	compatible = "nordic,nrf-twi";
 	status = "okay";
 	sda-pin = <26>;
 	scl-pin = <27>;
@@ -137,11 +139,20 @@
 };
 
 &spi0 {
+	compatible = "nordic,nrf-spi";
 	/* Cannot be used together with i2c0. */
 	/* status = "okay"; */
 	sck-pin = <27>;
 	mosi-pin = <26>;
 	miso-pin = <29>;
+};
+
+&spi1 {
+	compatible = "nordic,nrf-spi";
+	status = "okay";
+	sck-pin = <11>;
+	mosi-pin = <32>;
+	miso-pin = <12>;
 };
 
 &qspi {
