@@ -9,7 +9,7 @@
 
 / {
 	model = "Pinnacle 100 Dev Kit";
-	compatible = "lairdconnect,pinnacle100-dvk";
+	compatible = "lairdconnect,pinnacle-100-dvk";
 
 	chosen {
 		zephyr,console = &uart0;
@@ -109,7 +109,7 @@
 	rts-pin = <13>;
 	cts-pin = <15>;
 	hl7800 {
-		compatible = "swi,hl7800";
+		compatible = "swir,hl7800";
 		status = "okay";
 		label = "hl7800";
 		mdm-reset-gpios = <&gpio1 15 0>;

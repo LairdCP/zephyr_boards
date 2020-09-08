@@ -8,6 +8,9 @@ if BOARD_PINNACLE_100_DVK
 config BOARD
 	default "pinnacle_100_dvk"
 
+config MODEM_HL7800
+	default NETWORKING
+
 if USB
 
 config USB_NRFX

@@ -24,17 +24,3 @@ CONFIG_UART_CONSOLE=y
 
 # additional board options
 CONFIG_GPIO_AS_PINRESET=y
-
-# Modem driver
-CONFIG_MODEM=y
-CONFIG_MODEM_RECEIVER=y
-CONFIG_MODEM_HL7800=y
-
-# Networking
-CONFIG_NETWORKING=y
-CONFIG_NET_IPV4=y
-CONFIG_NET_CONFIG_NEED_IPV4=y
-CONFIG_NET_UDP=y
-# disable IPv6 because it is not yet supported for the HL7800 driver
-CONFIG_NET_IPV6=n
-CONFIG_NET_CONFIG_NEED_IPV6=n
