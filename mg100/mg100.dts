@@ -88,7 +88,7 @@
 	rts-pin = <13>;
 	cts-pin = <15>;
 	hl7800 {
-		compatible = "swi,hl7800";
+		compatible = "swir,hl7800";
 		status = "okay";
 		label = "hl7800";
 		mdm-reset-gpios = <&gpio1 15 0>;
