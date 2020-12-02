@@ -7,6 +7,7 @@ if BOARD_BT6
 
 config BOARD
 	default "bt6"
+
 if USB
 
 config USB_NRFX
