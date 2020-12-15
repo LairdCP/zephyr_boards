@@ -8,6 +8,9 @@ if BOARD_MG100
 config BOARD
 	default "MG100"
 
+config MODEM_HL7800
+	default NETWORKING
+
 if USB
 
 config USB_NRFX
