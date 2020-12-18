@@ -60,7 +60,7 @@
 			label = "Boot button switch 1 (SW1)";
 		};
 		button2: button_2 {
-			gpios = <&gpio0 33 GPIO_PULL_UP>;
+			gpios = <&gpio1 1 GPIO_PULL_UP>;
 			label = "Tamper switch 2 (SW2)";
 		};
 	};
