@@ -36,7 +36,7 @@
 
     pwmleds {
 		compatible = "pwm-leds";
-		
+
 		led1redpwm: led_pwm_1 {
 			pwms = <&pwm0 35>;
 			label = "PWM LED 1 RED";
@@ -63,8 +63,12 @@
 			gpios = <&gpio1 1 GPIO_PULL_UP>;
 			label = "Tamper switch 2 (SW2)";
 		};
+		mag0: mag_0 {
+			compatible = "honeywell,sm351lt";
+			gpios = <&gpio1 15 0>;
+			label = "SM353LT_0";
+		};
 	};
-
 
 	aliases {
 		led1 = &led1red;
@@ -73,7 +77,8 @@
         led2pwm = &led2greenpwm;
 		sw0 = &button0;
 		sw1 = &button1;
-        sw2 = &button2;
+		sw2 = &button2;
+		sw3 = &mag0;
 	};
 };
 
