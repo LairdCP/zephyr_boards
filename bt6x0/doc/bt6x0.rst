@@ -6,7 +6,9 @@ Laird Connectivity Sentrius BT6x0 Sensor
 Overview
 ********
 
-The Sentrius™ BT6x0 Sensor is a battery powered, Bluetooth v5 Long Range integrated sensor platform that uses a Nordic Semiconductor nRF52840 ARM Cortex-M4F CPU.
+The Sentrius™ BT6x0 Sensor is a battery powered, Bluetooth v5 Long Range
+integrated sensor platform that uses a Nordic Semiconductor nRF52840 ARM
+Cortex-M4F CPU.
 
 The sensor has the following features:
 
@@ -27,14 +29,14 @@ The sensor has the following features:
 * :abbr:`WDT (Watchdog Timer)`
 
 .. figure:: img/bt6x0_front.jpg
-     :width: 250px
+     :width: 500px
      :align: center
      :alt: Sentrius BT6x0 Sensor, front view
 
      Sentrius BT6x0 Sensor, front view
 
 .. figure:: img/bt6x0_back.jpg
-     :width: 250px
+     :width: 500px
      :align: center
      :alt: Sentrius BT6x0 Sensor, rear view
 
@@ -87,13 +89,22 @@ hardware features:
 | WDT       | on-chip    | watchdog             |
 +-----------+------------+----------------------+
 
+.. figure:: img/bt6x0_board.jpg
+     :width: 500px
+     :align: center
+     :alt: Sentrius BT6x0 Sensor, board layout
+
+     Sentrius BT6x0 Sensor, board layout
+
 Connections and IOs
 ===================
 
 LED
 ---
 
-Two LEDs are visible through the BT6x0 housing lid. Note that the LEDs can be driven either directly, or via PWM. PWM should be used when current consumption is required to be minimised.
+Two LEDs are visible through the BT6x0 housing lid. Note that the LEDs can be
+driven either directly, or via PWM. PWM should be used when current consumption
+is required to be minimised.
 
 * LED_1 (red) = LED0 = P1.07 (Red LED 1)
 * LED_2 (green) = LED1 = P1.03 (Green LED 2)
@@ -104,23 +115,31 @@ Two LEDs are visible through the BT6x0 housing lid. Note that the LEDs can be dr
 Push button
 ------------
 
-The BT6x0 incorporates two mechanical push buttons. Note these are only accessible with the housing cover removed.
+The BT6x0 incorporates three mechanical push buttons. Note these are only
+accessible with the housing cover removed.
+
+Two of the buttons are available for use via the board DTS file, as follows.
 
 * BUTTON_1 = SW0 = P0.24 (Boot button SW1)
 * BUTTON_2 = SW1 = P1.01 (Tamper switch SW2)
 
+A third mechanical push button is provided to allow reset of the on-board
+microcontroller.
+
 Magnetoresistive sensor
 -----------------------
 
-The BT6x0 incorporates a Honeywell SM351LT magnetoresistive sensor. Refer to the `Honeywell SM351LT datasheet`_ for further details.
+The BT6x0 incorporates a Honeywell SM351LT magnetoresistive sensor. Refer to
+the `Honeywell SM351LT datasheet`_ for further details.
 
 * MAG_1 = SW2 = P1.15 (SM3531LT_0)
 
 External flash memory
 ---------------------
 
-A 64Mbit external flash memory part is available for storage of application images and data. Refer to the
-`Macronix MX25R6435FZNIL0 datasheet`_ for further details.
+A 64Mbit external flash memory part is available for storage of application
+images and data. Refer to the `Macronix MX25R6435FZNIL0 datasheet`_ for further
+details.
 
 The flash memory is connected to the on-board QSPI device controller.
 
@@ -129,103 +148,109 @@ The flash memory is connected to the on-board QSPI device controller.
 Voltage reference
 -----------------
 
-A precision 2.5V voltage reference is provided on the V_REF input for use during AD measurements.
+A precision 2.5V voltage reference is provided on the V_REF input for use
+during AD measurements.
+
 This can deliver up to 50mA peak and 20mA continuous current.
 
 
 Sensor connectivity
 -------------------
 
-The BT6x0 incorporates three terminal blocks J5, J6 & J7 that allow connectivity to its sensor inputs, as follows.
+The BT6x0 incorporates three terminal blocks J5, J6 & J7 that allow
+connectivity to its sensor inputs, as follows.
 
 Terminal Block J5
 -----------------
 
-+-----------+------------------------+--------------------------------+-----------+
-| Pin No.   | Name                   | Description                    | Direction |
-+===========+========================+================================+===========+
-| 1         | EXT_SPI_CS_2           | External SPI CS 2              | OUT       |
-+-----------+------------------------+--------------------------------+-----------+
-| 2         | GND                    | GND                            | (N/A)     |
-+-----------+------------------------+--------------------------------+-----------+
-| 3         | AIN4                   | Analog Input 4                 | IN        |
-+-----------+------------------------+--------------------------------+-----------+
-| 4         | AIN3                   | Analog Input 3                 | IN        |
-+-----------+------------------------+--------------------------------+-----------+
-| 5         | GND                    | GND                            | (N/A)     |
-+-----------+------------------------+--------------------------------+-----------+
-| 6         | AIN2                   | Analog Input 2                 | IN        |
-+-----------+------------------------+--------------------------------+-----------+
-| 7         | AIN1                   | Analog Input 1                 | IN        |
-+-----------+------------------------+--------------------------------+-----------+
-| 8         | GND                    | GND                            | (N/A)     |
-+-----------+------------------------+--------------------------------+-----------+
-| 9         | DIN2                   | Digital Input 2                | IN        |
-+-----------+------------------------+--------------------------------+-----------+
-| 10        | DO2                    | Digital Output 2               | OUT       |
-+-----------+------------------------+--------------------------------+-----------+
++-----------+------------------------+----------------------------+-----------+
+| Pin No.   | Name                   | Description                | Direction |
++===========+========================+============================+===========+
+| 1         | EXT_SPI_CS_2           | External SPI CS 2          | OUT       |
++-----------+------------------------+----------------------------+-----------+
+| 2         | GND                    | GND                        | (N/A)     |
++-----------+------------------------+----------------------------+-----------+
+| 3         | AIN4                   | Analog Input 4             | IN        |
++-----------+------------------------+----------------------------+-----------+
+| 4         | AIN3                   | Analog Input 3             | IN        |
++-----------+------------------------+----------------------------+-----------+
+| 5         | GND                    | GND                        | (N/A)     |
++-----------+------------------------+----------------------------+-----------+
+| 6         | AIN2                   | Analog Input 2             | IN        |
++-----------+------------------------+----------------------------+-----------+
+| 7         | AIN1                   | Analog Input 1             | IN        |
++-----------+------------------------+----------------------------+-----------+
+| 8         | GND                    | GND                        | (N/A)     |
++-----------+------------------------+----------------------------+-----------+
+| 9         | DIN2                   | Digital Input 2            | IN        |
++-----------+------------------------+----------------------------+-----------+
+| 10        | DO2                    | Digital Output 2           | OUT       |
++-----------+------------------------+----------------------------+-----------+
 
 Terminal Block J6
 -----------------
 
-+-----------+------------------------+--------------------------------+-----------+
-| Pin No.   | Name                   | Description                    | Direction |
-+===========+========================+================================+===========+
-| 1         | DO1                    | Digital Output 1               | OUT       |
-+-----------+------------------------+--------------------------------+-----------+
-| 2         | DIN1                   | Digital Input 1                | IN        |
-+-----------+------------------------+--------------------------------+-----------+
-| 3         | GND                    | GND                            | (N/A)     |
-+-----------+------------------------+--------------------------------+-----------+
-| 4         | THERM4                 | Thermistor Input 4             | IN        |
-+-----------+------------------------+--------------------------------+-----------+
-| 5         | THERM3                 | Thermistor Input 3             | IN        |
-+-----------+------------------------+--------------------------------+-----------+
-| 6         | GND                    | GND                            | (N/A)     |
-+-----------+------------------------+--------------------------------+-----------+
-| 7         | THERM2                 | Thermistor Input 2             | IN        |
-+-----------+------------------------+--------------------------------+-----------+
-| 8         | THERM1                 | Thermistor Input 1             | IN        |
-+-----------+------------------------+--------------------------------+-----------+
-| 9         | GND                    | GND                            | (N/A)     |
-+-----------+------------------------+--------------------------------+-----------+
-| 10        | B+ OUT                 | External sensor power supply   | (N/A)     |
-+-----------+------------------------+--------------------------------+-----------+
++-----------+------------------------+----------------------------+-----------+
+| Pin No.   | Name                   | Description                | Direction |
++===========+========================+============================+===========+
+| 1         | DO1                    | Digital Output 1           | OUT       |
++-----------+------------------------+----------------------------+-----------+
+| 2         | DIN1                   | Digital Input 1            | IN        |
++-----------+------------------------+----------------------------+-----------+
+| 3         | GND                    | GND                        | (N/A)     |
++-----------+------------------------+----------------------------+-----------+
+| 4         | THERM4                 | Thermistor Input 4         | IN        |
++-----------+------------------------+----------------------------+-----------+
+| 5         | THERM3                 | Thermistor Input 3         | IN        |
++-----------+------------------------+----------------------------+-----------+
+| 6         | GND                    | GND                        | (N/A)     |
++-----------+------------------------+----------------------------+-----------+
+| 7         | THERM2                 | Thermistor Input 2         | IN        |
++-----------+------------------------+----------------------------+-----------+
+| 8         | THERM1                 | Thermistor Input 1         | IN        |
++-----------+------------------------+----------------------------+-----------+
+| 9         | GND                    | GND                        | (N/A)     |
++-----------+------------------------+----------------------------+-----------+
+| 10        | B+ OUT                 | Ext. sensor power supply   | (N/A)     |
++-----------+------------------------+----------------------------+-----------+
 
 Terminal Block J7
 -----------------
 
-+-----------+------------------------+--------------------------------+-----------+
-| Pin No.   | Name                   | Description                    | Direction |
-+===========+========================+================================+===========+
-| 1         | UART_1_RTS             | UART 1 RTS                     | IN        |
-+-----------+------------------------+--------------------------------+-----------+
-| 2         | UART_1_CTS             | UART 1 CTS                     | OUT       |
-+-----------+------------------------+--------------------------------+-----------+
-| 3         | UART_1_RXD             | UART 1 RXD                     | IN        |
-+-----------+------------------------+--------------------------------+-----------+
-| 4         | UART_1_TXD             | UART 1 TXD                     | OUT       |
-+-----------+------------------------+--------------------------------+-----------+
-| 5         | EXT_I2C_SCL            | External I2C SCL               | OUT       |
-+-----------+------------------------+--------------------------------+-----------+
-| 6         | EXT_I2C_SDA            | External I2C SDA               | IN/OUT    |
-+-----------+------------------------+--------------------------------+-----------+
-| 7         | EXT_SPI_CLK/TRACEDATA3 | External SPI CLK/TRACE DATA 3  | OUT       |
-+-----------+------------------------+--------------------------------+-----------+
-| 8         | EXT_SPI_MISO           | External SPI MISO              | IN        |
-+-----------+------------------------+--------------------------------+-----------+
-| 9         | EXT_SPI_MOSI           | External SPI MOSI              | OUT       |
-+-----------+------------------------+--------------------------------+-----------+
-| 10        | EXT_SPI_CS_1           | External SPI CS 1              | OUT       |
-+-----------+------------------------+--------------------------------+-----------+
++-----------+------------------------+----------------------------+-----------+
+| Pin No.   | Name                   | Description                | Direction |
++===========+========================+============================+===========+
+| 1         | UART_1_RTS             | UART 1 RTS                 | IN        |
++-----------+------------------------+----------------------------+-----------+
+| 2         | UART_1_CTS             | UART 1 CTS                 | OUT       |
++-----------+------------------------+----------------------------+-----------+
+| 3         | UART_1_RXD             | UART 1 RXD                 | IN        |
++-----------+------------------------+----------------------------+-----------+
+| 4         | UART_1_TXD             | UART 1 TXD                 | OUT       |
++-----------+------------------------+----------------------------+-----------+
+| 5         | EXT_I2C_SCL            | External I2C SCL           | OUT       |
++-----------+------------------------+----------------------------+-----------+
+| 6         | EXT_I2C_SDA            | External I2C SDA           | IN/OUT    |
++-----------+------------------------+----------------------------+-----------+
+| 7         | EXT_SPI_CLK/TRACEDATA3 | Ext. SPI CLK/TRACE DATA 3  | OUT       |
++-----------+------------------------+----------------------------+-----------+
+| 8         | EXT_SPI_MISO           | External SPI MISO          | IN        |
++-----------+------------------------+----------------------------+-----------+
+| 9         | EXT_SPI_MOSI           | External SPI MOSI          | OUT       |
++-----------+------------------------+----------------------------+-----------+
+| 10        | EXT_SPI_CS_1           | External SPI CS 1          | OUT       |
++-----------+------------------------+----------------------------+-----------+
 
 Analog inputs
 -------------
 
-The four external Analog Inputs are multiplexed to a single host microcontroller AD input, AIN_1, via a TI TMUX1204 multiplexer.
+The four external Analog Inputs are multiplexed to a single host
+microcontroller AD input, AIN_1, via a TI TMUX1204 multiplexer.
+
 Refer to the `TI TMUX1204 datasheet`_ for further details.
 
-Signals up to 12V, to a maximum of 50mA, can be applied to the external Analog Inputs.
+Signals up to 12V, to a maximum of 50mA, can be applied to the external Analog
+Inputs.
 
 External Analog Input connections are made to the multiplexer as follows.
 
@@ -241,9 +266,11 @@ External Analog Input connections are made to the multiplexer as follows.
 | AIN4         | S4           |
 +--------------+--------------+
 
-A TI TCA9538 port expander is used to determine the mode of each Analog Input, for either voltage or current measurement,
-and also to control the mutliplexer. A high level applied to the appropriate expander port pin enables the associated analog input
-as a current input; when a low logic level is applied, voltage measurement mode is selected.
+A TI TCA9538 port expander is used to determine the mode of each Analog Input,
+for either voltage or current measurement, and also to control the mutliplexer.
+A high level applied to the appropriate expander port pin enables the
+associated analog input as a current input; when a low logic level is applied,
+voltage measurement mode is selected.
 
 Refer to the `TI TCA9538 datasheet`_ for further details.
 
@@ -269,8 +296,9 @@ The expander port connections are as follows.
 | P7           | (N/C)         |
 +--------------+---------------+
 
-The following illustrates some possible configuration values for the port expander. Note that it is possible for
-combinations of voltage and current measurement to be applied such that some external Analog Inputs measure current
+The following illustrates some possible configuration values for the port
+expander. Note that it is possible for combinations of voltage and current
+measurement to be applied such that some external Analog Inputs measure current
 and others voltage. This is not shown below.
 
 +----------------+------------------------------+
@@ -293,7 +321,9 @@ and others voltage. This is not shown below.
 | b'00111000'    | AIN4, current measurement    |
 +----------------+------------------------------+
 
-Circuitry associated with the analog input measurements can be disabled when not in use.
+Circuitry associated with the analog input measurements can be disabled when
+not in use.
+
 A GPIO is used to control this behaviour, as shown below.
 
 +----------------+-----------+
@@ -307,7 +337,9 @@ A GPIO is used to control this behaviour, as shown below.
 Thermistor inputs
 -----------------
 
-The four external thermistor inputs are connected to a single AD input, AIN_2, via a TI TMUX1204 multiplexer.
+The four external thermistor inputs are connected to a single AD input, AIN_2,
+via a TI TMUX1204 multiplexer.
+
 Refer to the `TI TMUX1204 datasheet`_ for further details.
 
 External analog input connections are made to the multiplexer as follows.
@@ -324,7 +356,9 @@ External analog input connections are made to the multiplexer as follows.
 | THERM4       | S4           |
 +--------------+--------------+
 
-The same port expander used to select external analog inputs is also used to select external thermistor inputs.
+The same port expander used to select external analog inputs is also used to
+select external thermistor inputs.
+
 The table below defines possible values that can be written.
 
 +----------------+-----------------------+
@@ -339,7 +373,8 @@ The table below defines possible values that can be written.
 | b'00110000'    | THERM4                |
 +----------------+-----------------------+
 
-A GPIO line is used to enable electronics associated with thermistor measurement. This is controlled as shown below.
+A GPIO line is used to enable electronics associated with thermistor
+measurement. This is controlled as shown below.
 
 +----------------+-----------------------+
 | THERM_ENABLE   | Behaviour             |
@@ -349,16 +384,18 @@ A GPIO line is used to enable electronics associated with thermistor measurement
 | 1              | Disabled              |
 +----------------+-----------------------+
 
-Note the thermistor circuit must be calibrated before use. A suggested method for achieving this is described in the
+Note the thermistor circuit must be calibrated before use. A suggested method
+for achieving this is described in the
 `BT610 Zephyr Application Thermistor Calibration`_ application note.
 
 Digital inputs
 --------------
 
 Two external digital inputs are available for connection to external signals.
-For the digital level being applied to be detected, an appropriate output pin must first be set.
-This approach is taken to ensure supporting circuitry can be powered down when the input state
-is not being determined. When in use, the external digital input level can be read from the appropriate input pin.
+For the digital level being applied to be detected, an appropriate output pin
+must first be set. This approach is taken to ensure supporting circuitry can be
+powered down when the input state is not being determined. When in use, the
+external digital input level can be read from the appropriate input pin.
 
 The output and input pins required are as follows.
 
@@ -373,10 +410,11 @@ The output and input pins required are as follows.
 Digital outputs
 ---------------
 
-Two external digital outputs are available to provide signals to or to directly drive external equipment.
+Two external digital outputs are available to provide signals to or to directly
+drive external equipment.
 
-To provide a high level on the external digital output, a high logic level is applied to the approriate
-host microcontroller output.
+To provide a high level on the external digital output, a high logic level is
+applied to the appropriate host microcontroller output.
 
 The output pins required are as follows.
 
@@ -391,18 +429,21 @@ The output pins required are as follows.
 External power supply
 ---------------------
 
-Power can be supplied to external sensors via the B+ OUT terminal. This is enabled by setting the
-BATTERY_OUTPUT_ENABLE GPIO line. In addition, the external supply can be boosted to 5V by setting
-the HIGH_SUPPLY_ENABLE GPIO line. When 5V is not selected, the external power supply follows the
+Power can be supplied to external sensors via the B+ OUT terminal. This is
+enabled by setting the BATTERY_OUTPUT_ENABLE GPIO line. In addition, the
+external supply can be boosted to 5V by setting the HIGH_SUPPLY_ENABLE GPIO
+line. When 5V is not selected, the external power supply follows the
 battery voltage.
 
-Up to 50mA peak and 20mA continuous current can be delivered by the External Power Supply.
+Up to 50mA peak and 20mA continuous current can be delivered by the External
+Power Supply.
 
 External sensor I2C port
 ------------------------
 
-External I2C sensors can be connected on the external I2C port. Note that external I2C sensors should
-be powered from the B+ terminal to ensure applied voltage levels match those expected internally by the board.
+External I2C sensors can be connected on the external I2C port. Note that
+external I2C sensors should be powered from the B+ terminal to ensure applied
+voltage levels match those expected internally by the board.
 
 Required pins are as follows.
 
@@ -418,8 +459,9 @@ Required pins are as follows.
 External sensor SPI port
 ------------------------
 
-Up to 2 external SPI sensors can be connected on the external SPI port. Note that external SPI sensors should
-be powered from the B+ terminal to ensure applied voltage levels match those expected internally by the board.
+Up to 2 external SPI sensors can be connected on the external SPI port. Note
+that external SPI sensors should be powered from the B+ terminal to ensure
+applied voltage levels match those expected internally by the board.
 
 Required pins are as follows.
 
@@ -448,7 +490,7 @@ built and flashed in the usual way (see :ref:`build_an_application`
 and :ref:`application_run` for more details); however, the standard
 debugging targets are not currently available.
 
-The BT6x0 features a 10 way socket for connection of a
+The BT6x0 features a 10 way header, J3, for connection of a
 programmer/debugger, with pinout as follows.
 
 +-----------+------------+----------------------+
@@ -475,7 +517,8 @@ programmer/debugger, with pinout as follows.
 | 10        | nRESET     | Reset Pin            |
 +-----------+------------+----------------------+
 
-Access to the sensor debug UART is facilitated by a 6 pin header with pinout as follows.
+Access to the sensor debug UART is facilitated by a 6 pin header, J1, with
+pinout as follows.
 
 +-----------+------------+----------------------+-----------+
 | Pin No.   | Name       | Description          | Direction |
@@ -493,7 +536,8 @@ Access to the sensor debug UART is facilitated by a 6 pin header with pinout as 
 | 6         | UART_0_CTS | UART 0 CTS Pin       | OUT       |
 +-----------+------------+----------------------+-----------+
 
-Note that pin 3 requires a solder bridge to be closed to enable powering of the BT6x0 board via the UART connector.
+Note that pin 3 requires a solder bridge to be closed to enable powering of the
+BT6x0 board via the UART connector.
 
 Flashing
 ========
@@ -509,14 +553,15 @@ Here is an example for the :ref:`hello_world` application.
 First, run your favorite terminal program to listen for output.
 
 NOTE: On the BT6x0, the UART lines are at TTL levels and must be passed through
-an appropriate line driver circuit for translation to RS232 levels. Refer to the `MAX3232 datasheet`_
-for a suitable driver IC.
+an appropriate line driver circuit for translation to RS232 levels. Refer to
+the `MAX3232 datasheet`_ for a suitable driver IC.
 
 .. code-block:: console
 
    $ minicom -D <tty_device> -b 115200
 
-Replace :code:`<tty_device>` with the port where the BT6x0 can be found. For example, under Linux, :code:`/dev/ttyUSB0`.
+Replace :code:`<tty_device>` with the port where the BT6x0 can be found. For
+example, under Linux, :code:`/dev/ttyUSB0`.
 
 Then build and flash the application in the usual way.
 
@@ -548,14 +593,14 @@ Try them out:
 Testing the LEDs and buttons on the BT6x0
 *****************************************
 
-There are 2 samples that allow you to test that the buttons (switches) and LEDs on
-the board are working properly with Zephyr:
+There are 2 samples that allow you to test that the buttons (switches) and LEDs
+on the board are working properly with Zephyr:
 
 * :ref:`blinky-sample`
 * :ref:`button-sample`
 
-You can build and flash the examples to make sure Zephyr is running correctly on
-your board. The button, LED and sensor device definitions can be found in
+You can build and flash the examples to make sure Zephyr is running correctly
+on your board. The button, LED and sensor device definitions can be found in
 :zephyr_file:`boards/arm/bt6x0/bt6x0.dts`.
 
 
