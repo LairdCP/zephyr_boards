@@ -1,15 +1,14 @@
 identifier: bl5340_dvk_cpuapp
-name: BL5340-DVK-NRF5340-application-MCU
+name: BL5340-DVK-application-MCU
 type: mcu
 arch: arm
 toolchain:
   - gnuarmemb
   - xtools
   - zephyr
-ram: 64
-flash: 448
+ram: 448
+flash: 1024
 supported:
-  - adc
   - gpio
   - i2c
   - pwm

@@ -10,7 +10,7 @@
 
 / {
 	model = "Laird Connectivity BL5340 (nRF5340) Application";
-	compatible = "nordic,nrf5340-dk-nrf5340-cpuapp";
+	compatible = "lairdconnectivity,bl5340-dvk-cpuapp";
 
 	chosen {
 		zephyr,sram = &sram0_image;
@@ -19,4 +19,9 @@
 		zephyr,sram-secure-partition = &sram0_s;
 		zephyr,sram-non-secure-partition = &sram0_ns;
 	};
+};
+
+&usbd {
+	compatible = "nordic,nrf-usbd";
+	status = "okay";
 };

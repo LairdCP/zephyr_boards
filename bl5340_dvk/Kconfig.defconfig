@@ -1,12 +1,26 @@
 # BL5340-DVK board configuration
 
 # Copyright (c) 2019-2020 Nordic Semiconductor ASA
+# Copyright (c) 2021 Laird Connectivity
 # SPDX-License-Identifier: Apache-2.0
 
 if BOARD_BL5340_DVK_CPUAPP || BOARD_BL5340_DVK_CPUAPPNS
 
 config BOARD
 	default "bl5340_dvk_cpuapp" if BOARD_BL5340_DVK_CPUAPP || BOARD_BL5340_DVK_CPUAPPNS
+
+
+config FLASH
+	default y
+
+if BOARD_BL5340_DVK_CPUAPP
+
+# Enable QSPI for secondary partition maps
+
+config NORDIC_QSPI_NOR
+	default y
+
+endif # BOARD_BL5340_DVK_CPUAPP
 
 # By default, if we build for a Non-Secure version of the board,
 # force building with TF-M as the Secure Execution Environment.
@@ -16,13 +30,12 @@ config BUILD_WITH_TFM
 
 if BUILD_WITH_TFM
 
-# By default, force building TF-M without bootloader support.
-
-choice TFM_BL2
+# By default, if we build with TF-M, instruct build system to
+# flash the combined TF-M (Secure) & Zephyr (Non Secure) image
+# (when building in-tree tests).
+config TFM_FLASH_MERGED_BINARY
 	bool
-	prompt "BL2 configuration, should TFM build with MCUboot support"
-	default TFM_BL2_FALSE
-endchoice
+	default y if TEST_ARM_CORTEX_M
 
 endif # BUILD_WITH_TFM
 
@@ -54,7 +67,7 @@ endif # BUILD_WITH_TFM
 DT_CHOSEN_Z_CODE_PARTITION := zephyr,code-partition
 DT_CHOSEN_Z_SRAM_PARTITION := zephyr,sram-secure-partition
 
-if (BOARD_BL5340_DVK_CPUAPP) && TRUSTED_EXECUTION_SECURE
+if BOARD_BL5340_DVK_CPUAPP && TRUSTED_EXECUTION_SECURE
 
 config FLASH_LOAD_SIZE
 	default $(dt_chosen_reg_size_hex,$(DT_CHOSEN_Z_CODE_PARTITION))
@@ -62,7 +75,7 @@ config FLASH_LOAD_SIZE
 config SRAM_SIZE
 	default $(dt_chosen_reg_size_int,$(DT_CHOSEN_Z_SRAM_PARTITION),0,K)
 
-endif # (BOARD_BL5340_DVK_CPUAPP) && TRUSTED_EXECUTION_SECURE
+endif # BOARD_BL5340_DVK_CPUAPP && TRUSTED_EXECUTION_SECURE
 
 if BOARD_BL5340_DVK_CPUAPPNS
 

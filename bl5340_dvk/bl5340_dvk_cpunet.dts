@@ -9,7 +9,7 @@
 
 / {
 	model = "Laird Connectivity BL5340 (nRF5340) Network";
-	compatible = "nordic,nrf5340-dk-nrf5340-cpunet";
+	compatible = "lairdconnectivity,bl5340-dvk-cpunet";
 
 	chosen {
 		zephyr,console = &uart0;
@@ -21,8 +21,6 @@
 		zephyr,flash = &flash1;
 		zephyr,code-partition = &slot0_partition;
 	};
-
-	/* LEDs and buttons are on an SPI TCA9538 GPIO port expander and will be added once the driver is added */
 };
 
 &gpiote {

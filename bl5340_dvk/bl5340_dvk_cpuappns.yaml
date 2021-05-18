@@ -1,5 +1,5 @@
 identifier: bl5340_dvk_cpuappns
-name: BL5340-DVK-NRF5340-application-MCU-Non-Secure
+name: BL5340-DVK-application-MCU-Non-Secure
 type: mcu
 arch: arm
 toolchain:
@@ -7,13 +7,11 @@ toolchain:
   - xtools
   - zephyr
 ram: 192
-flash: 448
+flash: 192
 supported:
-  - adc
   - gpio
   - i2c
   - pwm
-  - qspi
   - spi
   - watchdog
   - uart
