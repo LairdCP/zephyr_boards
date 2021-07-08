@@ -25,9 +25,8 @@ CONFIG_UART_CONSOLE=y
 # additional board options
 CONFIG_GPIO_AS_PINRESET=y
 
-# Spi
+# SPI
 CONFIG_SPI=y
-CONFIG_SPI_2=y
 
 CONFIG_I2C=y
 CONFIG_SENSOR=y
