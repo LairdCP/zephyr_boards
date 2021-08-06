@@ -7,12 +7,16 @@ CONFIG_BOARD_BL654_USB=y
 # Enable MPU
 CONFIG_ARM_MPU=y
 
-# enable GPIO
+# Enable GPIO
 CONFIG_GPIO=y
 
-# enable USB
+# Enable USB
 CONFIG_USB=y
 CONFIG_USB_CDC_ACM=y
 
-# additional board options
+# Additional board options
 CONFIG_GPIO_AS_PINRESET=y
+
+# 32KHz clock source
+CONFIG_CLOCK_CONTROL_NRF_K32SRC_XTAL=y
+CONFIG_CLOCK_CONTROL_NRF_K32SRC_150PPM=y
