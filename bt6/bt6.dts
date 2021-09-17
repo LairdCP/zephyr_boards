@@ -42,26 +42,21 @@
 			label = "PWM LED 1 RED";
 		};
 
-        led2greenpwm: led_pwm_2 {
+		led2greenpwm: led_pwm_2 {
 			pwms = <&pwm1 39>;
 			label = "PWM LED 2 Green";
 		};
-
 	};
 
 	buttons {
 		compatible = "gpio-keys";
 		button0: button_0 {
-			gpios = <&gpio0 18 GPIO_PULL_UP>;
-			label = "Reset button switch 0 (SW0)";
+			gpios = <&gpio0 24 GPIO_PULL_UP>;
+			label = "Boot button switch 2 (SW2)";
 		};
 		button1: button_1 {
-			gpios = <&gpio0 24 GPIO_PULL_UP>;
-			label = "Boot button switch 1 (SW1)";
-		};
-		button2: button_2 {
 			gpios = <&gpio1 1 GPIO_PULL_UP>;
-			label = "Tamper switch 2 (SW2)";
+			label = "Tamper switch 3 (SW3)";
 		};
 		mag0: mag_0 {
 			compatible = "honeywell,sm351lt";
@@ -72,12 +67,11 @@
 
 	aliases {
 		led1 = &led1red;
-        led2 = &led2green;
-        led1pwm = &led1redpwm;
-        led2pwm = &led2greenpwm;
-		sw0 = &button0;
-		sw1 = &button1;
-		sw2 = &button2;
+		led2 = &led2green;
+		led1pwm = &led1redpwm;
+		led2pwm = &led2greenpwm;
+		sw1 = &button0;
+		sw2 = &button1;
 		sw3 = &mag0;
 	};
 };
@@ -88,11 +82,9 @@
 };
 
 &pwm1 {
-    status = "okay";
-    ch0-pin = <39>;
-
+	status = "okay";
+	ch0-pin = <39>;
 };
-
 
 &adc {
 	status = "okay";
@@ -138,12 +130,12 @@
 };
 
 &spi1 {
-    compatible = "nordic,nrf-spi";
+	compatible = "nordic,nrf-spi";
 	status = "okay";
 	sck-pin = <41>;
 	mosi-pin = <40>;
 	miso-pin = <4>;
-    cs-gpios = <&gpio0 18 0>;
+	cs-gpios = <&gpio0 25 GPIO_ACTIVE_LOW>, <&gpio0 31 GPIO_ACTIVE_LOW>;
 };
 
 &qspi {
