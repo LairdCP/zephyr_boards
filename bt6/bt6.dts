@@ -25,25 +25,25 @@
 	leds {
 		compatible = "gpio-leds";
 		led1red: led_1 {
-			gpios = <&gpio0 35 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio1 7 GPIO_ACTIVE_HIGH>;
 			label = "Red LED 1";
 		};
 		led2green: led_2 {
-			gpios = <&gpio0 39 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio1 3 GPIO_ACTIVE_HIGH>;
 			label = "Green LED 1";
 		};
 	};
 
-    pwmleds {
+	pwmleds {
 		compatible = "pwm-leds";
 
 		led1redpwm: led_pwm_1 {
-			pwms = <&pwm0 35>;
+			pwms = <&pwm0 39>;
 			label = "PWM LED 1 RED";
 		};
 
 		led2greenpwm: led_pwm_2 {
-			pwms = <&pwm1 39>;
+			pwms = <&pwm1 35>;
 			label = "PWM LED 2 Green";
 		};
 	};
