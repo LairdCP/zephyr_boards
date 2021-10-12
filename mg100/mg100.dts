@@ -115,6 +115,7 @@
 		reg = <0x19>;
 		irq-gpios = <&gpio0 28 GPIO_ACTIVE_HIGH>;
 		label = "LIS2DH";
+		anym-on-int1;
 	};
 };
 
