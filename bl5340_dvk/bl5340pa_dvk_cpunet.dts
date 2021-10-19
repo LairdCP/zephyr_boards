@@ -1,4 +1,5 @@
 /*
+ * Copyright (c) 2020 Nordic Semiconductor ASA
  * Copyright (c) 2021 Laird Connectivity
  *
  * SPDX-License-Identifier: Apache-2.0
@@ -10,8 +11,8 @@
 #include "bl5340_dvk_cpunet_common.dts"
 
 / {
-	model = "Laird Connectivity BL5340 (nRF5340) Network";
-	compatible = "lairdconnectivity,bl5340-dvk-cpunet";
+	model = "Laird Connectivity BL5340PA (nRF5340 with nRF21540) Network";
+	compatible = "lairdconnectivity,bl5340pa-dvk-cpunet";
 
 	chosen {
 		zephyr,console = &uart0;
@@ -23,10 +24,20 @@
 		zephyr,flash = &flash1;
 		zephyr,code-partition = &slot0_partition;
 	};
+
+	nrf_radio_fem: nrf21540_fem {
+		compatible = "nordic,nrf21540-fem";
+		tx-en-gpios = <&gpio0 30 GPIO_ACTIVE_HIGH>;
+		rx-en-gpios = <&gpio0 31 GPIO_ACTIVE_HIGH>;
+		pdn-gpios = <&gpio0 29 GPIO_ACTIVE_HIGH>;
+		ant-sel-gpios = <&gpio0 4 GPIO_ACTIVE_HIGH>;
+		spi-if = <&nrf_radio_fem_spi>;
+	};
 };
 
 &uart0 {
-	status = "okay";
+	/* UART is disabled by default so that the FEM SPI can be used */
+	status = "disabled";
 	current-speed = <115200>;
 	tx-pin = <40>;
 	rx-pin = <42>;
