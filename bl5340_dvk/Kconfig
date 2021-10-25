@@ -86,7 +86,7 @@ config BOARD_ENABLE_CPUNET
 config BOARD_ENABLE_CPUNET_UART_PASSTHROUGH
 	bool "Enable nRF53 Network MCU UART passthrough"
 	depends on BOARD_ENABLE_CPUNET
-	default y
+	default y if (BOARD_BL5340_DVK_CPUAPP || BOARD_BL5340_DVK_CPUAPP_NS)
 	help
 	  This will pass the UART pins which can optionally be used by the
 	  network core through to the network core so it can be used as a UART
