@@ -110,11 +110,11 @@
 	scl-pin = <27>;
 
 	lis2dh@19 {
-		compatible = "st,lis2dh";
+		compatible = "st,lis3dh", "st,lis2dh";
 		status = "okay";
 		reg = <0x19>;
 		irq-gpios = <&gpio0 28 GPIO_ACTIVE_HIGH>;
-		label = "LIS2DH";
+		label = "LIS3DH";
 		anym-on-int1;
 	};
 };
