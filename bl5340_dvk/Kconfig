@@ -117,7 +117,10 @@ config DOMAIN_CPUNET_BOARD
 config CHECK_RADIO_POWER_LIMITED
 	bool "Ensure radio power is limited"
 	depends on BOARD_BL5340PA_DVK_CPUAPP
-	default y
+	default y if BT
+	select LCZ
+	select LCZ_DRIVER
+	select LCZ_RPMSG
 	help
 	  Will prevent the Bluetooth stack from starting if the radio core fails
 	  to verify that the regulatory limits have been imposed correctly,
@@ -145,7 +148,11 @@ config BT_ECC
 config LIMIT_RADIO_POWER
 	bool "Limit radio power to 8dBm"
 	depends on BOARD_BL5340PA_DVK_CPUNET
-	default y
+	select LCZ
+	select LCZ_DRIVER
+	select LCZ_RPMSG
+	select LCZ_BL5340PA
+	default y if BT
 	help
 	  Will limit the transmit power of the BL5340PA radio to 8dBm when
 	  operating in BLE mode using the hci_rpmsg application on the network
