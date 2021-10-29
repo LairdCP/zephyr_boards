@@ -114,6 +114,21 @@ config DOMAIN_CPUNET_BOARD
 	  another board. For example hci_rpmsg on the bl5340_dvk_cpunet for
 	  Bluetooth applications.
 
+config CHECK_RADIO_POWER_LIMITED
+	bool "Ensure radio power is limited"
+	depends on BOARD_BL5340PA_DVK_CPUAPP
+	default y
+	help
+	  Will prevent the Bluetooth stack from starting if the radio core fails
+	  to verify that the regulatory limits have been imposed correctly,
+	  requires LIMIT_RADIO_POWER is used on the network core. Note that if
+	  using other network stacks on the network core (e.g. 802.15.4), they
+	  must be modified or designed to comply with the various regulatory
+	  requirements. Laird Connectivity accepts no responsibility for
+	  misconfigured software that breaches regulatory limitations, this
+	  responsibility lies wholly with the implementer of the module into a
+	  product and/or system.
+
 endif # BOARD_BL5340_DVK_CPUAPP || BOARD_BL5340_DVK_CPUAPP_NS || \
       # BOARD_BL5340PA_DVK_CPUAPP || BOARD_BL5340PA_DVK_CPUAPP_NS
 
@@ -126,6 +141,20 @@ config BT_CTLR
 
 config BT_ECC
 	default y if BT
+
+config LIMIT_RADIO_POWER
+	bool "Limit radio power to 8dBm"
+	depends on BOARD_BL5340PA_DVK_CPUNET
+	default y
+	help
+	  Will limit the transmit power of the BL5340PA radio to 8dBm when
+	  operating in BLE mode using the hci_rpmsg application on the network
+	  core. Note that if using other applications or network stacks on the
+	  network core (e.g. 802.15.4), they must be modified or designed to
+	  comply with the various regulatory requirements. Laird Connectivity
+	  accepts no responsibility for misconfigured software that breaches
+	  regulatory limitations, this responsibility lies wholly with the
+	  implementer of the module into a product and/or system.
 
 config DOMAIN_CPUAPP_BOARD
 	string
