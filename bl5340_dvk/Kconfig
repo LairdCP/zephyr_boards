@@ -130,7 +130,8 @@ config CHECK_RADIO_POWER_LIMITED
 	  requirements. Laird Connectivity accepts no responsibility for
 	  misconfigured software that breaches regulatory limitations, this
 	  responsibility lies wholly with the implementer of the module into a
-	  product and/or system.
+	  product and/or system. See LIMIT_RADIO_POWER for details on BL5340PA
+	  network core functionality
 
 endif # BOARD_BL5340_DVK_CPUAPP || BOARD_BL5340_DVK_CPUAPP_NS || \
       # BOARD_BL5340PA_DVK_CPUAPP || BOARD_BL5340PA_DVK_CPUAPP_NS
@@ -146,7 +147,7 @@ config BT_ECC
 	default y if BT
 
 config LIMIT_RADIO_POWER
-	bool "Limit radio power to 8dBm"
+	bool "Limit radio power to 5dBm"
 	depends on BOARD_BL5340PA_DVK_CPUNET
 	select LCZ
 	select LCZ_DRIVER
@@ -154,14 +155,16 @@ config LIMIT_RADIO_POWER
 	select LCZ_BL5340PA
 	default y if BT
 	help
-	  Will limit the transmit power of the BL5340PA radio to 8dBm when
+	  Will limit the transmit power of the BL5340PA radio to 5dBm when
 	  operating in BLE mode using the hci_rpmsg application on the network
 	  core. Note that if using other applications or network stacks on the
 	  network core (e.g. 802.15.4), they must be modified or designed to
 	  comply with the various regulatory requirements. Laird Connectivity
 	  accepts no responsibility for misconfigured software that breaches
 	  regulatory limitations, this responsibility lies wholly with the
-	  implementer of the module into a product and/or system.
+	  implementer of the module into a product and/or system. This assumes
+	  that the BL5340PA FEM has a gain of 21dBm and limits the nRF5340
+	  output power to -16dBm
 
 config DOMAIN_CPUAPP_BOARD
 	string
