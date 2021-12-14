@@ -20,6 +20,7 @@
 		zephyr,sram = &sram0;
 		zephyr,flash = &flash0;
 		zephyr,code-partition = &slot0_partition;
+		nordic,pm-ext-flash = &mx25r64;
 	};
 
 	leds {
@@ -152,7 +153,6 @@
 		label = "MX25R64";
 		jedec-id = [c2 28 17];
 		size = <67108864>;
-		has-be32k;
 		has-dpd;
 		t-enter-dpd = <10000>;
 		t-exit-dpd = <35000>;
