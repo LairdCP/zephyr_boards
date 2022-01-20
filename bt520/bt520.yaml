@@ -1,5 +1,5 @@
-identifier: bt510
-name: BT510
+identifier: bt520
+name: BT520
 type: mcu
 arch: arm
 toolchain:
@@ -13,4 +13,4 @@ supported:
   - pwm
   - watchdog
   - i2c
-  - spi
+  - sm351lt

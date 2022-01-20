@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 Laird Connectivity
+ * Copyright (c) 2020-2022 Laird Connectivity
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -8,8 +8,8 @@
 #include <nordic/nrf52840_qiaa.dtsi>
 
 / {
-	model = "Laird Sentrius BT510 Sensor";
-	compatible = "nordic,pca10056-dk";
+	model = "Laird Connectivity Sentrius BT520 Sensor";
+	compatible = "lairdconnect,bt520";
 
 	chosen {
 		zephyr,console = &uart0;
@@ -69,8 +69,9 @@
 	mag {
 		compatible = "gpio-keys";
 		mag0: mag_0 {
+			compatible = "honeywell,sm351lt";
 			gpios = <&gpio1 14 0>;
-			label = "Magnetoresitive Sensor";
+			label = "SM351LT_0";
 		};
 	};
 
@@ -137,29 +138,24 @@
 		#address-cells = <1>;
 		#size-cells = <1>;
 
-		/* 96K */
+		/* 32K */
 		boot_partition: partition@0 {
 			label = "mcuboot";
-			reg = <0x000000000 0x00018000>;
+			reg = <0x000000000 0x00008000>;
 		};
-		/* 396K */
-		slot0_partition: partition@18000 {
+		/* 400K */
+		slot0_partition: partition@8000 {
 			label = "image-0";
-			reg = <0x00018000 0x000063000>;
+			reg = <0x00008000 0x000064000>;
 		};
-		/* 396K */
-		slot1_partition: partition@7b000 {
+		/* 400K */
+		slot1_partition: partition@6c000 {
 			label = "image-1";
-			reg = <0x0007b000 0x000063000>;
-		};
-		/* 8K */
-		scratch_partition: partition@de000 {
-			label = "image-scratch";
-			reg = <0x000de000 0x00002000>;
+			reg = <0x0006c000 0x000064000>;
 		};
 
 		/*
-		 * The flash starting at 0x000e0000 and ending at
+		 * The flash starting at 0x000d0000 and ending at
 		 * 0x000fffff is reserved for use by the application.
 		 */
 
@@ -167,10 +163,10 @@
 		 * Storage partition will be used by FCB/LittleFS/NVS
 		 * if enabled.
 		 */
-		/* 128K */
-		storage_partition: partition@e0000 {
+		/* 192K */
+		storage_partition: partition@d0000 {
 			label = "storage";
-			reg = <0x000e0000 0x00020000>;
+			reg = <0x000d0000 0x00030000>;
 		};
 	};
 };

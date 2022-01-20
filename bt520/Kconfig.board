@@ -1,0 +1,8 @@
+# BT520 board configuration
+
+# Copyright (c) 2020-2022 Laird Connectivity
+# SPDX-License-Identifier: Apache-2.0
+
+config BOARD_BT520
+	bool "BT520"
+	depends on SOC_NRF52840_QIAA

@@ -1,12 +1,12 @@
-.. _bt510:
+.. _bt520:
 
-Laird Connectivity Sentrius BT510 Sensor
+Laird Connectivity Sentrius BT520 Sensor
 ########################################
 
 Overview
 ********
 
-The Sentrius™ BT510 Sensor is a battery powered, Bluetooth v5 Long Range integrated sensor that uses a Nordic Semiconductor nRF52840 ARM Cortex-M4F CPU.
+The Sentrius™ BT520 Sensor is a battery powered, Bluetooth v5 Long Range integrated sensor that uses a Nordic Semiconductor nRF52840 ARM Cortex-M4F CPU.
 
 The sensor has the following features:
 
@@ -21,27 +21,25 @@ The sensor has the following features:
 * RADIO (Bluetooth Low Energy and 802.15.4)
 * :abbr:`RTC (nRF RTC System Clock)`
 * Segger RTT (RTT Console)
-* :abbr:`SPI (Serial Peripheral Interface)`
 * :abbr:`UART (Universal Asynchronous Receiver-Transmitter)`
-* :abbr:`USB (Universal Serial Bus)`
 * :abbr:`WDT (Watchdog Timer)`
 
-.. figure:: img/bt510.png
-     :width: 500px
+.. figure:: img/bt520.jpg
+     :width: 250px
      :align: center
-     :alt: Sentrius BT510 Sensor, front view
+     :alt: Sentrius BT520 Sensor, front view
 
-     Sentrius BT510 Sensor, front view
+     Sentrius BT520 Sensor, front view
 
-.. figure:: img/bt510_back.jpg
-     :width: 500px
+.. figure:: img/bt520_back.jpg
+     :width: 250px
      :align: center
-     :alt: Sentrius BT510 Sensor, rear view
+     :alt: Sentrius BT520 Sensor, rear view
 
-     Sentrius BT510 Sensor, rear view
+     Sentrius BT520 Sensor, rear view
 
 More information about the board can be found at the
-`Sentrius BT510 website`_.
+`Sentrius BT520 website`_.
 
 Hardware
 ********
@@ -49,7 +47,7 @@ Hardware
 Supported Features
 ==================
 
-The BT510 Sensor supports the following
+The BT520 Sensor supports the following
 hardware features:
 
 +-----------+------------+----------------------+
@@ -78,11 +76,7 @@ hardware features:
 +-----------+------------+----------------------+
 | RTT       | Segger     | console              |
 +-----------+------------+----------------------+
-| SPI(M/S)  | on-chip    | spi                  |
-+-----------+------------+----------------------+
 | UART      | on-chip    | serial               |
-+-----------+------------+----------------------+
-| USB       | on-chip    | usb                  |
 +-----------+------------+----------------------+
 | WDT       | on-chip    | watchdog             |
 +-----------+------------+----------------------+
@@ -93,7 +87,7 @@ Connections and IOs
 LED
 ---
 
-Two LEDs are visible through the BT510 housing lid.
+Two LEDs are visible through the BT520 housing lid.
 
 * LED_1A (green) = P0.22
 * LED_1B (red) = P0.20
@@ -101,21 +95,21 @@ Two LEDs are visible through the BT510 housing lid.
 Push button
 ------------
 
-The BT510 housing lid also acts as a push button.
+The BT520 housing lid also acts as a push button.
 
 * BUTTON_1 = SW1 = P1.10
 
 Magnetoresistive sensor
 -----------------------
 
-The BT510 incorporates a Honeywell SM351LT magnetoresistive sensor. Refer to the _Honeywell SM351LT datasheet for further details.
+The BT520 incorporates a Honeywell SM351LT magnetoresistive sensor. Refer to the `Honeywell SM351LT datasheet`_ for further details.
 
 * MAG = P1.14
 
 Accelerometer
 -------------
 
-The BT510 incorporates an I2C ST Microelectronics LIS2DH accelerometer. Refer to the _ST Microelectronics LIS2DH datasheet for further details.
+The BT520 incorporates an I2C ST Microelectronics LIS2DH accelerometer. Refer to the `ST Microelectronics LIS2DH datasheet`_ for further details.
 
 * SDA = P0.26
 * SCL = P0.27
@@ -125,7 +119,7 @@ The BT510 incorporates an I2C ST Microelectronics LIS2DH accelerometer. Refer to
 Temperature Sensor
 ------------------
 
-The BT510 incorporates an I2C Silabs SI7055 temperature sensor. Refer to the _Silabs 7055 datasheet for further details.
+The BT520 incorporates an I2C Silabs SI7055 temperature sensor. Refer to the `Silabs 7055 datasheet`_ for further details.
 
 * SDA = P0.26
 * SCL = P0.27
@@ -133,12 +127,11 @@ The BT510 incorporates an I2C Silabs SI7055 temperature sensor. Refer to the _Si
 Programming and Debugging
 *************************
 
-Applications for the ``bt510`` board configuration can be
-built and flashed in the usual way (see :ref:`build_an_application`
-and :ref:`application_run` for more details); however, the standard
-debugging targets are not currently available.
+Applications for the ``bt520`` board configuration can be built, flashed, and
+debugged in the usual way. See :ref:`build_an_application` and
+:ref:`application_run` for more details on building and running.
 
-The BT510 features a TagConnect 10 way socket for connection of a
+The BT520 features a TagConnect 10 way socket for connection of a
 programmer/debugger, refer to `TagConnect TC2050 product page`_
 for details of an appropriate TagConnect cable.
 
@@ -171,47 +164,71 @@ A non-standard layout is used to include access to the sensor debug UART.
 Connectivity to the programmer/debugger must be modified to match
 the pinout shown above.
 
-Laird Connectivity provide the USB-SWD programming board that supports
+Laird Connectivity provide the USB-SWD programming board (750-03239) that supports
 this connector layout, refer to the `USB SWD Programmer product page`_
 .
 
 Flashing
 ========
 
-Follow the instructions in the :ref:`nordic_segger` page to install
-and configure all the necessary software. Further information can be
-found in :ref:`nordic_segger_flashing`. Then build and flash
-applications as usual (see :ref:`build_an_application` and
-:ref:`application_run` for more details).
+To connect the BT520 board for programming or debugging using the USB-SWD programming
+board, on the programming board set SW6 to the supply out position and SW5 to the 3V3
+position, ensure there is a jumper on J35 and that SW1 is in the debug position, then
+connect the BT520 to the board using the Tag-Connect cable via J3:
+
+.. figure:: img/bt520_prog.png
+     :width: 630px
+     :align: center
+     :alt: Sentrius BT520 Sensor connected to programming board
+
+     Sentrius BT520 Sensor connected to programming board
+
+Then build and flash applications as usual (see :ref:`build_an_application` and
+:ref:`application_run` for more details). For example, to flash:
+
+.. code-block:: console
+
+   $ ninja flash
 
 Here is an example for the :ref:`hello_world` application.
 
 First, run your favorite terminal program to listen for output.
 
-NOTE: On the BT510, the FTDI USB should be used to access the UART console.
+NOTE: On the BT520, the UART lines are at TTL levels and must be passed through
+an appropriate line driver circuit for translation to RS232 levels. Refer to the `MAX3232 datasheet`_
+for a suitable driver IC. The USB-SWD programming board has an in-built UART connected
+to the BT520 acting as a USB CDC port, on Linux and Windows 10 this driver should be
+installed automatically, for Windows 7, the MBED driver is required to use the serial
+port - see the `MBED Serial Driver`_ link for details and how to install the driver.
 
 .. code-block:: console
 
    $ minicom -D <tty_device> -b 115200
 
-Replace :code:`<tty_device>` with the port where the bt510 can be found. For example, under Linux, :code:`/dev/ttyUSB0`.
+Replace :code:`<tty_device>` with the port where the bt520 can be found. For example, under Linux, :code:`/dev/ttyACM0`.
 
 Then build and flash the application in the usual way.
 
 .. zephyr-app-commands::
    :zephyr-app: samples/hello_world
-   :board: bt510
+   :board: bt520
    :goals: build flash
+
+Note that an external debugger is required to perform application flashing.
 
 Debugging
 =========
 
-Refer to the :ref:`nordic_segger` page to learn about debugging Nordic based boards with a
-Segger IC.
+The ``bt520`` board does not have an on-board J-Link debug IC
+as some nRF5x development boards, however, instructions from the
+:ref:`nordic_segger` page also apply to this board, with the additional step
+of connecting an external debugger. The USB-SWD programmer board has a CMSIS debugger
+compatible interface and debugging can be performed using pyocd, openocd or any other
+applications that support the CMSIS interface.
 
-Testing Bluetooth on the BT510
+Testing Bluetooth on the BT520
 ***********************************
-Many of the Bluetooth examples will work on the BT510.
+Many of the Bluetooth examples will work on the BT520.
 Try them out:
 
 * :ref:`ble_peripheral`
@@ -219,7 +236,7 @@ Try them out:
 * :ref:`bluetooth-ibeacon-sample`
 
 
-Testing the LEDs and buttons on the BT510
+Testing the LEDs and buttons on the BT520
 *****************************************
 
 There are 2 samples that allow you to test that the buttons (switches) and LEDs on
@@ -230,7 +247,7 @@ the board are working properly with Zephyr:
 
 You can build and flash the examples to make sure Zephyr is running correctly on
 your board. The button, LED and sensor device definitions can be found in
-:zephyr_file:`boards/arm/bt510/bt510.dts`.
+:zephyr_file:`boards/arm/bt520/bt520.dts`.
 
 
 References
@@ -238,9 +255,11 @@ References
 
 .. target-notes::
 
-.. _Sentrius BT510 website: https://www.lairdconnect.com/iot-devices/iot-sensors/bt510-bluetooth-5-long-range-ip67-multi-sensor
+.. _Sentrius BT520 website: https://www.lairdconnect.com/iot-devices/iot-sensors/bt520-bluetooth-5-long-range-ip67-multi-sensor
 .. _TagConnect TC2050 product page: https://www.tag-connect.com/product/tc2050-idc-050
 .. _USB SWD Programmer product page: https://www.lairdconnect.com/usb-swd-programmer/
+.. _MAX3232 datasheet: https://www.ti.com/lit/ds/symlink/max3232.pdf
 .. _Silabs 7055 datasheet: https://www.silabs.com/documents/public/data-sheets/Si7050-1-3-4-5-A20.pdf
 .. _ST Microelectronics LIS2DH datasheet: https://www.st.com/resource/en/datasheet/lis2dh.pdf
 .. _Honeywell SM351LT datasheet: https://sensing.honeywell.com/honeywell-sensing-nanopower-series-datasheet-50095501-c-en.pdf
+.. _MBED Serial Driver: https://os.mbed.com/docs/mbed-os/v6.8/program-setup/windows-serial-driver.html

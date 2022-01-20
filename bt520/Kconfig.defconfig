@@ -1,12 +1,12 @@
-# BT510 Sensor configuration
+# BT520 Sensor configuration
 
-# Copyright (c) 2020 Laird Connectivity
+# Copyright (c) 2020-2022 Laird Connectivity
 # SPDX-License-Identifier: Apache-2.0
 
-if BOARD_BT510
+if BOARD_BT520
 
 config BOARD
-	default "bt510"
+	default "bt520"
 
 config IEEE802154_NRF5
 	default y
@@ -15,4 +15,4 @@ config IEEE802154_NRF5
 config BT_CTLR
 	default BT
 
-endif # BOARD_BT510
+endif # BOARD_BT520
