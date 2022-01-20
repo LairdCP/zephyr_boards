@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2020 Laird Connectivity
+ * Copyright (c) 2020-2022 Laird Connectivity
  *
  * SPDX-License-Identifier: Apache-2.0
  */
@@ -8,8 +8,8 @@
 #include <nordic/nrf52840_qiaa.dtsi>
 
 / {
-	model = "Laird BT6 Sensor";
-	compatible = "nordic,nrf52840-dk-nrf52840";
+	model = "Laird Connectivity BT610 Sensor";
+	compatible = "lairdconnect,bt610";
 
 	chosen {
 		zephyr,console = &uart0;
@@ -25,27 +25,27 @@
 
 	leds {
 		compatible = "gpio-leds";
-		led1red: led_1 {
+		led1: led_1 {
 			gpios = <&gpio1 7 GPIO_ACTIVE_HIGH>;
 			label = "Red LED 1";
 		};
-		led2green: led_2 {
+		led2: led_2 {
 			gpios = <&gpio1 3 GPIO_ACTIVE_HIGH>;
-			label = "Green LED 1";
+			label = "Green LED 2";
 		};
 	};
 
 	pwmleds {
 		compatible = "pwm-leds";
 
-		led1redpwm: led_pwm_1 {
+		led1pwm: led_1_pwm {
 			pwms = <&pwm0 39>;
-			label = "PWM LED 1 RED";
+			label = "Red PWM LED 1";
 		};
 
-		led2greenpwm: led_pwm_2 {
+		led2pwm: led_2_pwm {
 			pwms = <&pwm1 35>;
-			label = "PWM LED 2 Green";
+			label = "Green PWM LED 2";
 		};
 	};
 
@@ -67,24 +67,24 @@
 	};
 
 	aliases {
-		led1 = &led1red;
-		led2 = &led2green;
-		led1pwm = &led1redpwm;
-		led2pwm = &led2greenpwm;
-		sw1 = &button0;
-		sw2 = &button1;
-		sw3 = &mag0;
+		led0 = &led1;
+		led1 = &led2;
+		led0pwm = &led1pwm;
+		led1pwm = &led2pwm;
+		sw0 = &button0;
+		sw1 = &button1;
+		sw2 = &mag0;
 	};
 };
 
 &pwm0 {
 	status = "okay";
-	ch0-pin = <35>;
+	ch0-pin = <39>;
 };
 
 &pwm1 {
 	status = "okay";
-	ch0-pin = <39>;
+	ch0-pin = <35>;
 };
 
 &adc {
@@ -117,10 +117,10 @@
 	compatible = "nordic,nrf-uarte";
 	current-speed = <115200>;
 	status = "okay";
-	tx-pin = <14>;
-	rx-pin = <16>;
-	rts-pin = <15>;
-	cts-pin = <13>;
+	tx-pin = <16>;
+	rx-pin = <14>;
+	rts-pin = <13>;
+	cts-pin = <15>;
 };
 
 &i2c0 {
@@ -152,6 +152,12 @@
 		sck-frequency = <8000000>;
 		label = "MX25R64";
 		jedec-id = [c2 28 17];
+		sfdp-bfp = [
+			e5 20 f1 ff  ff ff ff 03  44 eb 08 6b  08 3b 04 bb
+			ee ff ff ff  ff ff 00 ff  ff ff 00 ff  0c 20 0f 52
+			10 d8 00 ff  23 72 f5 00  82 ed 04 cc  44 83 68 44
+			30 b0 30 b0  f7 c4 d5 5c  00 be 29 ff  f0 d0 ff ff
+		];
 		size = <67108864>;
 		has-dpd;
 		t-enter-dpd = <10000>;
