@@ -214,8 +214,3 @@
 		};
 	};
 };
-
-&usbd {
-	compatible = "nordic,nrf-usbd";
-	status = "okay";
-};
