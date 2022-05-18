@@ -1,0 +1,21 @@
+# Summit SOM 8M Plus DVK board configuration
+
+# Copyright (c) 2022, Laird Connectivity
+# SPDX-License-Identifier: Apache-2.0
+
+if BOARD_SUMMIT_SOM8MPLUS_DVK
+
+config BOARD
+	default "summit_som8mplus_dvk"
+
+if !XIP
+config FLASH_SIZE
+	default 0
+config FLASH_BASE_ADDRESS
+	default 0
+endif
+
+config FLASH_MCUX_FLEXSPI_NOR
+	default y if FLASH
+
+endif # BOARD_SUMMIT_SOM8MPLUS_DVK

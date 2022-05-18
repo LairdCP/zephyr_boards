@@ -1,0 +1,110 @@
+/*
+ * Copyright (c) 2022, Laird Connectivity
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+#include <lairdconnectivity/summit_som8mplus.dtsi>
+#include <dt-bindings/gpio/gpio.h>
+
+/ {
+	model = "Laird Connectivity Summit SOM 8M Plus DVK board";
+	compatible = "lairdconnect,summit-som8mplus-dvk";
+
+	leds {
+		compatible = "gpio-leds";
+		red_led: led_0 {
+			gpios = <&pca6416 9 GPIO_ACTIVE_HIGH>;
+			label = "RGB Red LED";
+		};
+		green_led: led_1 {
+			gpios = <&pca6416 8 GPIO_ACTIVE_HIGH>;
+			label = "RGB Green LED";
+		};
+		blue_led: led_2 {
+			gpios = <&pca6416 10 GPIO_ACTIVE_HIGH>;
+			label = "RGB Blue LED";
+		};
+	};
+
+	pwmleds {
+		compatible = "pwm-leds";
+
+		pwm_bl: pwm-bl {
+			pwms = <&pwm2 0 30>;
+			label = "Backlight PWM";
+		};
+	};
+
+	buttons {
+		compatible = "gpio-keys";
+		button5: button5 {
+			gpios = <&gpio3 22 GPIO_ACTIVE_LOW>;
+			label = "Volume Down push button (S5)";
+		};
+		button6: button6 {
+			gpios = <&gpio3 23 GPIO_ACTIVE_LOW>;
+			label = "Volume Up push button (S6)";
+		};
+	};
+
+	aliases {
+		volumedownbtn = &button5;
+		volumeupbtn = &button6;
+		led0 = &red_led;
+		led1 = &green_led;
+		led2 = &blue_led;
+		sw0 = &button5;
+		pwm-led0 = &pwm_bl;
+	};
+
+	chosen {
+		zephyr,flash-controller = &flexspi;
+		zephyr,flash = &mt25qu256aba;
+		zephyr,canbus = &flexcan1;
+		zephyr,can-primary = &flexcan1;
+	};
+};
+
+&uart4 {
+	status = "okay";
+	current-speed = <115200>;
+};
+
+&i2c3 {
+	status = "disabled";
+
+	pca6416: gpio@20 {
+		compatible = "nxp,pca95xx";
+		label = "IOEXP";
+		reg = <0x20>;
+		gpio-controller;
+		#gpio-cells = <2>;
+		status = "disabled";
+	};
+};
+
+&flexcan1 {
+	bus-speed = <1000000>;
+	status = "disabled";
+};
+
+&flexcan2 {
+	bus-speed = <1000000>;
+	status = "disabled";
+};
+
+&flexspi {
+	status = "disabled";
+
+	mt25qu256aba: mt25qu256aba@0 {
+		compatible = "nxp,imx-flexspi-nor", "jedec,spi-nor";
+		reg = <0>;
+		spi-max-frequency = <80000000>;
+		status = "disabled";
+		jedec-id = [bb 19 20];
+		size = <DT_SIZE_M(32)>;
+		label = "FLASH_0";
+	};
+};

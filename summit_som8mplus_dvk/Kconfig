@@ -1,0 +1,24 @@
+# Summit SOM 8M Plus DVK board configuration
+#
+# Copyright (c) 2022 Laird Connectivity
+# SPDX-License-Identifier: Apache-2.0
+
+if BOARD_SUMMIT_SOM8MPLUS_DVK
+
+if PWM
+
+choice
+    prompt "PWM Backlight Pin Selection"
+    default PWM_BACKLIGHT_PIN_IO11
+
+config PWM_BACKLIGHT_PIN_IO9
+    bool "PWM Backlight on IO9"
+
+config PWM_BACKLIGHT_PIN_IO11
+    bool "PWM Backlight on IO11"
+
+endchoice
+
+endif # PWM
+
+endif # BOARD_SUMMIT_SOM8MPLUS_DVK

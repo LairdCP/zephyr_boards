@@ -1,0 +1,23 @@
+identifier: summit_som8mplus_dvk_ddr
+name: summit-som8mplus-dvk
+type: mcu
+arch: arm
+ram: 2048
+flash: 2048
+toolchain:
+  - zephyr
+  - gnuarmemb
+  - xtools
+testing:
+  ignore_tags:
+    - net
+    - bluetooth
+supported:
+  - uart
+  - i2c
+  - counter
+  - can
+  - spi
+  - pwm
+  - watchdog
+  - gpio

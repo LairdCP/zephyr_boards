@@ -1,0 +1,9 @@
+# Summit SOM 8M Plus DVK board configuration
+#
+# Copyright (c) 2022, Laird Connectivity
+# SPDX-License-Identifier: Apache-2.0
+
+config BOARD_SUMMIT_SOM8MPLUS_DVK
+	bool "Laird Connectivity Summit SOM 8M Plus DVK"
+	depends on SOC_SERIES_SUMMIT_SOM8M
+	select SOC_PART_NUMBER_MIMX8ML8DVNLZ

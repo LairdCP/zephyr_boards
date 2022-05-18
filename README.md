@@ -2,6 +2,12 @@
 
 This repository contains board files that can be used with the Zephyr RTOS.
 
+## The following boards use the Summit SOM 8M Plus SOM.
+
+### summit_som8mplus_dvk
+
+These are the board files for the Summit SOM8M Plus Development Kit (M7 Core).
+
 ## The following boards use the Pinnacle 100 Modem.
 
 ### pinnacle_100_dvk

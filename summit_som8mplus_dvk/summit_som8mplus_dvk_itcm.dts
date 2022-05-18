@@ -1,0 +1,16 @@
+/*
+ * Copyright (c) 2022, Laird Connectivity
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+#include "summit_som8mplus_dvk.dtsi"
+
+/ {
+	chosen {
+		/* TCM */
+		zephyr,flash = &itcm;
+		zephyr,sram = &dtcm;
+	};
+};
