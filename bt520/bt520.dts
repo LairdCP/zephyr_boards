@@ -107,6 +107,13 @@
 	pinctrl-0 = <&uart0_default>;
 	pinctrl-1 = <&uart0_sleep>;
 	pinctrl-names = "default", "sleep";
+
+	uartpower_0 {
+		compatible = "lairdconnect,driverpower";
+		label = "UARTPOWER_0";
+		gpios = <&gpio0 3 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+		control-console;
+	};
 };
 
 &i2c0 {
