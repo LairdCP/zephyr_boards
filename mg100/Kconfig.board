@@ -1,8 +1,0 @@
-# MG100(TM) board configuration
-#
-# Copyright (c) 2020 Laird Connectivity
-# SPDX-License-Identifier: Apache-2.0
-
-config  BOARD_MG100
-	bool "MG100"
-	depends on SOC_NRF52840_QIAA
